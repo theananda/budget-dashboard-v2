@@ -4,10 +4,10 @@
 			<router-link to="/" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Back</router-link>
 		</div>
 		<div class="mdl-cell mdl-cell--3-col map-wrapper">
-			<geo-json/>
+			<map-explorer/>
 		</div>
 		<div class="mdl-cell mdl-cell--9-col viz-wrapper">
-			<h5>Region Name</h5>
+			<h5>{{ region }}</h5>
 			<apex-bar-chart/>
 		</div>
 	</div>
@@ -15,14 +15,19 @@
 
 <script>
 
-import GeoJSON from './charts/GeoJSON.vue'
+import MapEx from './charts/Map.vue'
 import BarStacked from './charts/BarStacked.vue'
 
 export default {
     name: 'MapExplorer',
     components: {
-        'geo-json' : GeoJSON,
+        'map-explorer' : MapEx,
         'apex-bar-chart': BarStacked
+    },
+    data : function(){
+    	return {
+    		region: 'Union'
+    	}
     }
 }
 

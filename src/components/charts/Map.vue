@@ -13,7 +13,8 @@
         :attribution="attribution"
       />
       <l-geo-json
-        :geojson="geojson"
+        :geojson="stMap.geojson"
+        :options="stMap.options"
       >
       </l-geo-json>
     </l-map>
@@ -21,8 +22,9 @@
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker, LGeoJson } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LGeoJson } from 'vue2-leaflet'
 import geoData from '../../../static/data/states_and_region.json'
+import chroma from 'chroma-js'
 
 export default {
   name: 'Interactive Map',
@@ -43,7 +45,16 @@ export default {
       mapOptions: {
         zoomSnap: 0.5
       },
-      geojson: geoData
+      stMap: {
+        geojson: geoData,
+        options: {
+          fillColor: chroma('red'),
+          color: chroma('white'),
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.5
+        }
+      }
     };
   },
   methods: {
