@@ -5,6 +5,7 @@ import Home from './components/Home.vue'
 import Region from './components/ByRegion.vue'
 import Department from './components/ByDepartment.vue'
 import 'leaflet/dist/leaflet.css'
+import './assets/css/style.css'
 
 Vue.config.productionTip = false
 

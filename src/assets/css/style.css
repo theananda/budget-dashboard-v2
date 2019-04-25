@@ -1,0 +1,7 @@
+.home_wrapper {
+	height: 100%;
+	padding:200px 0px 400px 0px;
+	color: #fff;
+	background: url('../images/home-bg.jpg') center no-repeat;
+	background-size: cover;
+}
