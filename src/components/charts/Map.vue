@@ -1,6 +1,8 @@
 <template>
   <div>
+    <h4>{{ region }}</h4>
     <l-map
+      ref="interMap"
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
@@ -13,6 +15,7 @@
         :attribution="attribution"
       />
       <l-geo-json
+        ref="stMapLayer"
         :geojson="stMap.geojson"
         :options="stMap.options"
       >
@@ -27,7 +30,7 @@ import geoData from '../../../static/data/states_and_region.json'
 import chroma from 'chroma-js'
 
 export default {
-  name: 'Interactive Map',
+  name: 'InteractiveMap',
   components: {
     LMap,
     LTileLayer,
@@ -36,6 +39,7 @@ export default {
   },
   data () {
     return {
+      region: 'Union',
       zoom: 5,
       center: L.latLng(20.081847,96.5488883),
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
@@ -48,16 +52,40 @@ export default {
       stMap: {
         geojson: geoData,
         options: {
-          fillColor: chroma('red'),
-          color: chroma('white'),
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.5
+          style : function (geoJsonFeature) {
+              return {
+                fillColor: chroma.random(),
+                color: chroma('white'),
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.7
+              }
+          },
+          onEachFeature: this.onEachFeature
         }
       }
     };
   },
   methods: {
+    onEachFeature(feature, layer) {
+      let origin = this;
+      layer.on({
+        click: function(e) {
+          origin.$refs.stMapLayer.mapObject.setStyle({
+            fillOpacity: 0.1
+          });
+          this.setStyle({
+            fillOpacity: 1
+          });
+          origin.$refs.interMap.mapObject.fitBounds(this._latlngs);
+          origin.region = this.feature.properties.ST;
+          origin.$router.push({ 
+            name: 'state_region', 
+            params: { pcode: this.feature.properties.ST } 
+          })
+        }
+      });
+    },
     zoomUpdate (zoom) {
       this.currentZoom = zoom;
     },
