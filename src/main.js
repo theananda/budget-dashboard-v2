@@ -12,9 +12,27 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/regions', component: Region },
-  { path: '/departments', component: Department }
+  { 
+  	name: 'home',
+  	path: '/', 
+  	component: Home 
+  },
+  {
+  	name: 'union', 
+  	path: '/regions', 
+  	component: Region 
+  },
+  {
+  	name: 'state_region', 
+  	path: '/regions/:pcode', 
+  	component: Region, 
+  	props: true
+  },
+  { 
+  	name: 'departments',
+  	path: '/departments', 
+  	component: Department 
+  }
 ]
 
 const router = new VueRouter({
