@@ -5,3 +5,16 @@
 	background: url('../images/home-bg.jpg') center no-repeat;
 	background-size: cover;
 }
+
+.toolbar {
+	position: fixed;
+}
+
+.viz-area {
+	position: relative;
+	margin-top: 50px;
+}
+
+.map-wrapper {
+	position: fixed;
+}
