@@ -3,7 +3,7 @@
 		<div class="mdl-cell mdl-cell--12-col toolbar">
 			<router-link to="/" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Back</router-link>
 		</div>
-		<div class="mdl-cell mdl-cell--4-col">
+		<div class="mdl-cell mdl-cell--12-col">
 			<bubble-chart data="bubble_data" />
 		</div>
 	</div>

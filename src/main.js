@@ -24,7 +24,7 @@ const routes = [
   },
   {
   	name: 'state_region', 
-  	path: '/regions/:pcode', 
+  	path: '/region/:pcode', 
   	component: Region, 
   	props: true
   },
@@ -32,6 +32,11 @@ const routes = [
   	name: 'departments',
   	path: '/departments', 
   	component: Department 
+  },
+  {
+    name: 'department',
+    path: '/department/:slug',
+    component: Department
   }
 ]
 

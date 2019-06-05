@@ -1,22 +1,16 @@
 <template>
-	<div>
-		<svg
-			:height='height'
-			:width='width'
-		>
-			<g transform="translate(50,50)">
-			  <circle
-			    v-for="c in output"
-			    :key="c.id"
-			    :r="c.r"
-			    :cx="c.x"
-			    :cy="c.y"
-			    :fill="c.fill"
-			    :stroke="c.stroke"
-			  >
-			  </circle>
-			</g>
-		</svg>
+	<div class="department-wrapper mdl-grid">
+		<div class="mdl-cell mdl-cell--6-col">
+			<svg
+				:height='height'
+				:width='width'
+			>
+			</svg>
+		</div>
+		<div class="mdl-cell mdl-cell--6-col">
+			<h2 id="dept_name">{{ department_name }}</h2>
+			<h4 id="dept_value">{{ department_value }}</h4>
+		</div>
 	</div>
 </template>
 
@@ -25,18 +19,23 @@
 import Axios from 'axios'
 import * as d3 from "d3"
 import chroma from 'chroma-js'
+import slugify from '@sindresorhus/slugify'
 
 export default {
 	name: "BubbleChart",
 	data() {
 		return {
-			data : [],
+			chart_data : [],
 			width: 1000,
-			height: 1000
+			height: 1000,
+			department_name: '',
+			department_value: ''
 		}
 	},
 	beforeMount() {
+
 		this.getData();
+
 	},
 	methods: {
 		packChart() {
@@ -44,27 +43,20 @@ export default {
 								.size([500, 500])
 								.padding(10);
 
-			const output = packChart(this.packData).leaves();
+			return packChart(this.packData).leaves();
 
-			return output.map((d, i) => {
-			  return {
-			    id: i + 1,
-			    r: d.r,
-			    x: d.x,
-			    y: d.y,
-			    fill: chroma.random(),
-			    stroke: "grey",
-			    name: d.data.name,
-			    value: d.data.value
-			  };
-			});
 		},
     	getData() {
     		const api_url = "http://localhost:3000/budget?budget_level=Union";
     		Axios.get(api_url)
     		    .then(response => {
 
-    		    	this.data = this.analyse(response.data.data);
+    		    	this.chart_data = this.analyse(response.data.data);
+
+    		    	this.renderChart();
+
+					/*leaf.append("text")
+						.text(d => d.data.name);*/
 
     		});
     	},
@@ -88,11 +80,39 @@ export default {
 
 				  });
 			
-    	},	
+    	},
+    	renderChart() {
+
+	    	const leaf = d3.select("svg")
+							.selectAll("g")
+							.data(this.packChart)
+							.join("g")
+				      		.attr("transform", d => `translate(${d.x + 1},${d.y + 1})`);
+
+			const origin = this;
+
+			leaf.append("circle")
+				.attr("r", d => d.r)
+				.attr("fill", d => chroma.random());
+
+			leaf.on("click", function(d){
+
+				d3.select('#dept_name')
+					.text(d.data.name);
+
+				d3.select("#dept_value")
+					.text(d.data.value);
+
+				origin.$router.push({ 
+		            name: 'department', 
+		            params: { slug: slugify(d.data.name) } 
+		        });
+			});
+    	}	
 	},
 	computed: {
 		packData() {
-			return d3.hierarchy({children: this.data})
+			return d3.hierarchy({children: this.chart_data})
 						.sum(d => d.value);
 		},
 		output() {
