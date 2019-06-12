@@ -1,25 +1,53 @@
 export default {
 	expenditure : {
-		title: 'Budgeted Expenditure',
+		title: 'Expenditure by Budget Classification',
 		type: 'bar',
 		width: '500',
+		height: '400',
+		position: 'left',
 		options: {
 			chart: {
 			  	id: 'expenditure-stacked',
-			  	stacked: true
+			  	stacked: true,
+			  	stackType: '100%'
 			},
-			xaxis: {
-	            categories: ['2012', '2013', '2014', '2015',
-	              '2016', '2017'
-	            ],
-			}
+			dataLabels: {
+                enabled: false
+            },
+    		xaxis: {
+                categories: [],
+    		},
 		},
-		series: []
+		series: [],
+		viz_desc: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid excepturi minima sed? Nostrum tenetur libero eligendi. Autem harum culpa, eveniet laborum voluptatibus, amet porro officia, corporis soluta ab, dolor dolores.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid excepturi minima sed? Nostrum tenetur libero eligendi. Autem harum culpa, eveniet laborum voluptatibus, amet porro officia, corporis soluta ab, dolor dolores.</p>'
+	},
+	income : {
+		title: 'Income by Budget Classification',
+		type: 'bar',
+		width: '500',
+		height: '400',
+		position: 'left',
+		options: {
+			chart: {
+			  	id: 'income-stacked',
+			  	stacked: true,
+			  	stackType: '100%'
+			},
+			dataLabels: {
+                enabled: false
+            },
+    		xaxis: {
+                categories: [],
+    		},
+		},
+		series: [],
+		viz_desc: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid excepturi minima sed? Nostrum tenetur libero eligendi. Autem harum culpa, eveniet laborum voluptatibus, amet porro officia, corporis soluta ab, dolor dolores.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid excepturi minima sed? Nostrum tenetur libero eligendi. Autem harum culpa, eveniet laborum voluptatibus, amet porro officia, corporis soluta ab, dolor dolores.</p>'
 	},
 	unionTotal : {
 		title: 'Union Total Budget',
 		type: 'pie',
 		width: '380',
+		position: 'right',
 		series: [],
         options: {
           labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
