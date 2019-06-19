@@ -36,6 +36,7 @@
 							</div>	
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
@@ -55,7 +56,7 @@ export default {
     name: 'MapExplorer',
     components: {
         'map-explorer' : MapEx,
-        'apexchart' : VueApexCharts
+        'apexchart' : VueApexCharts,
     },
     data () {
     	return {
@@ -86,21 +87,9 @@ export default {
 
     		    	var analyse_data = this.analyse(response.data.data);
 
-    		    	var income_chart_data = this.prepareForChart(analyse_data['income']);
+    		    	this.charts.income.series = this.prepareForChart(analyse_data['income']);
 
-    		    	console.log(income_chart_data.categories);
-
-    		    	this.charts.income.options.xaxis.categories = income_chart_data.categories;
-
-    		    	this.charts.income.series = income_chart_data.series;
-
-    		    	var expenditure_chart_data = this.prepareForChart(analyse_data['expenditure']);
-
-    		    	console.log(expenditure_chart_data.categories);
-
-    		    	this.charts.expenditure.options.xaxis.categories = expenditure_chart_data.categories;
-
-    		    	this.charts.expenditure.series = expenditure_chart_data.series;
+    		    	this.charts.expenditure.series = this.prepareForChart(analyse_data['expenditure']);
 
     		});
     	},
@@ -126,50 +115,51 @@ export default {
     	},
     	prepareForChart(data) {
 
-    		var result = {
-    			categories : [],
-    			series : []
-    		};
-
     		var raw_series = new Object;
 
-    		var series_arr = [];
+            var series_arr = [];
+
+            var categories = [];
 
     		Object.keys(data).forEach(function(key) {
 
-    		  result.categories.push(key);
+                categories.push(key);
 
-    		  series_arr.push(data[key]);
+                series_arr.push(data[key]);
 
     		});
 
     		var i;
     		for (i = 0; i < series_arr.length; i++) {
 
-    			Object.keys(series_arr[i]).forEach(function(key){
+                Object.keys(series_arr[i]).forEach(function(key){
 
-    		  	if (raw_series.hasOwnProperty(key)) {
+                  if (!raw_series.hasOwnProperty(key)) {
 
-    		  		raw_series[key]['data'][i] = series_arr[i][key];
+                      raw_series[key] = {
+                          name : key,
+                          data : []
+                      };
 
-    		  	} else {
+                      categories.forEach(function(val){
+                        raw_series[key]['data'].push({
+                            x : val,
+                            y : 0
+                        });
+                      });
 
-    		  		raw_series[key] = {
-	    		  		name : key,
-	    		  		data : [0,0,0,0,0,0,0,0,0]
-    		  		};
+                  }
 
-    		  		raw_series[key]['data'][i] = series_arr[i][key];
-    		  		
-    		  	}
+                  raw_series[key]['data'][i] = {
+                                                  x : categories[i],
+                                                  y : series_arr[i][key]
+                                            };
 
-    		  });
+                });
 
     		}
 
-    		result.series = Object.values(raw_series);
-
-    		return result;
+    		return Object.values(raw_series);
 
     	}
     }
