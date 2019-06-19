@@ -47,7 +47,7 @@ export default {
 
 		},
     	getData() {
-    		const api_url = "http://localhost:3000/budget?budget_level=Union";
+    		const api_url = "http://localhost:3000/budget?budget_level=Union&flow=expenditure";
     		Axios.get(api_url)
     		    .then(response => {
 
@@ -63,21 +63,19 @@ export default {
     	analyse(data) {
     		return d3.nest()
 				  .key(function(d) { 
-				  	return d.budget_category; 
+				  	return d.budget_entry;
 				  })
 				  .rollup(function(v) { 
 				  	return d3.sum(v, function(d) { 
-				  		return d.value; 
+				  		return d.value;
 				  	}); 
 				  })
 				  .entries(data)
 				  .map(function(group) { 
-
 				  	return {
 				  		name : group.key,
 				  		value : group.value
 				  	};
-
 				  });
 			
     	},
@@ -101,7 +99,7 @@ export default {
 					.text(d.data.name);
 
 				d3.select("#dept_value")
-					.text(d.data.value);
+					.text(d.data.value + ' millions Kyats');
 
 				origin.$router.push({ 
 		            name: 'department', 
