@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home.vue'
 import Region from '@/components/ByRegion.vue'
-import Department from '@/components/ByDepartment.vue'
+import Sector from '@/components/BySector.vue'
 
 Vue.use(Router)
 
@@ -25,14 +25,14 @@ export default new Router({
       props: true
     },
     { 
-      name: 'departments',
-      path: '/departments', 
-      component: Department 
+      name: 'sectors',
+      path: '/sectors', 
+      component: Sector 
     },
     {
-      name: 'department',
-      path: '/department/:slug',
-      component: Department
+      name: 'sector',
+      path: '/sector/:slug',
+      component: Sector
     }
   ]
 })
