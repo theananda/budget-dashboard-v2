@@ -1,16 +1,13 @@
 <template>
 	<div class="department-wrapper mdl-grid">
 		<div class="mdl-cell mdl-cell--6-col">
-			<svg
+			<svg id="sector"
 				:height='height'
 				:width='width'
 			>
 			</svg>
 		</div>
-		<div class="mdl-cell mdl-cell--6-col">
-			<h2 id="dept_name">{{ department_name }}</h2>
-			<h4 id="dept_value">{{ department_value }}</h4>
-		</div>
+		<departments :name='department_name' :value='department_value' />
 	</div>
 </template>
 
@@ -18,8 +15,10 @@
 
 import Axios from 'axios'
 import * as d3 from "d3"
+import config from '@/config/index.js'
 import chroma from 'chroma-js'
 import slugify from '@sindresorhus/slugify'
+import Departments from '@/components/Departments.vue'
 
 export default {
 	name: "BubbleChart",
@@ -32,10 +31,15 @@ export default {
 			department_value: ''
 		}
 	},
+	props: [
+		'cdata',
+		'clickroute'
+	],
 	beforeMount() {
-
 		this.getData();
-
+	},
+	components: {
+	   'departments' : Departments
 	},
 	methods: {
 		packChart() {
@@ -47,7 +51,7 @@ export default {
 
 		},
     	getData() {
-    		const api_url = "http://localhost:3000/budget?budget_level=Union&flow=expenditure";
+    		const api_url = config.api_url + "/budget?budget_level=Union&flow=expenditure";
     		Axios.get(api_url)
     		    .then(response => {
 
@@ -55,15 +59,12 @@ export default {
 
     		    	this.renderChart();
 
-					/*leaf.append("text")
-						.text(d => d.data.name);*/
-
     		});
     	},
     	analyse(data) {
     		return d3.nest()
 				  .key(function(d) { 
-				  	return d.budget_entry;
+				  	return d.sector;
 				  })
 				  .rollup(function(v) { 
 				  	return d3.sum(v, function(d) { 
@@ -81,7 +82,7 @@ export default {
     	},
     	renderChart() {
 
-	    	const leaf = d3.select("svg")
+	    	const leaf = d3.select("#sector")
 							.selectAll("g")
 							.data(this.packChart)
 							.join("g")
@@ -95,14 +96,12 @@ export default {
 
 			leaf.on("click", function(d){
 
-				d3.select('#dept_name')
-					.text(d.data.name);
+				origin.department_name = d.data.name;
 
-				d3.select("#dept_value")
-					.text(d.data.value + ' millions Kyats');
+				origin.department_value = d.data.value;
 
 				origin.$router.push({ 
-		            name: 'department', 
+		            name: 'sector', 
 		            params: { slug: slugify(d.data.name) } 
 		        });
 			});
