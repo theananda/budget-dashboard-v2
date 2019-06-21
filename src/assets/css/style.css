@@ -18,3 +18,7 @@
 .map-wrapper {
 	position: fixed;
 }
+
+.region-chart-wrapper {
+	margin-top: 50px;
+}
