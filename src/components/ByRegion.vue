@@ -47,10 +47,11 @@
 
 import MapEx from './charts/Map.vue'
 import VueApexCharts from 'vue-apexcharts'
-import chartConfigs from './charts/chartsConfig.js'
+import chartConfigs from '@/config/charts.js'
 import Axios from 'axios'
-import * as d3 from "d3"
-import _ from "lodash"
+import * as d3 from 'd3'
+import _ from 'lodash'
+import config from '@/config/index.js'
 
 export default {
     name: 'MapExplorer',
@@ -81,7 +82,7 @@ export default {
     },
     methods: {
     	getData() {
-    		const api_url = "http://localhost:3000/budget?budget_level=" + this.region;
+    		const api_url = config.api_url + "/budget?budget_level=" + this.region;
     		Axios.get(api_url)
     		    .then(response => {
 
