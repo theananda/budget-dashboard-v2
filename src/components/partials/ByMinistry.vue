@@ -36,7 +36,6 @@ export default {
   	],
   	mounted() {
   		if (this.chart_data) {
-  			console.log(this.chart_data);
   			this.renderChart();	
   		}
   	},

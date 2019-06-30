@@ -120,9 +120,6 @@ export default {
             for (i = 0; i < dept_data.length; i++) {
                 this.department_data[dept_data[i]['key']] = dept_data[i]['values'];
             }
-                          
-
-            console.log(this.department_data);
 
 			
     	},
