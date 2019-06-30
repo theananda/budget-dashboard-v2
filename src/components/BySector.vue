@@ -3,10 +3,6 @@
 		<div class="mdl-cell mdl-cell--12-col toolbar">
 			<router-link to="/" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Back</router-link>
 		</div>
-		<!-- <div class="mdl-cell mdl-cell--12-col region-chart-wrapper">
-			<h2>2019 Expenditure</h2>
-			<bubble-chart :cdata="chart_data" />
-		</div> -->
         <div class="mdl-cell mdl-cell--12-col region-chart-wrapper">
             <div class="mdl-grid">
                 <ministry v-for="sector in sector_data" :name="sector.name" :value="sector.value" :cdata="department_data[sector.name]" :selector="slugify(sector.name)"></ministry>
@@ -100,21 +96,6 @@ export default {
                             }); 
                           })
                           .entries(data);
-                          /*.map(function(gp){
-
-                            var value = gp.values.map(function(d){
-                                return {
-                                    name : d.key,
-                                    value : d.value
-                                }
-                            });
-
-                            var result = {};
-                            result[gp.key] = value;
-
-                            return result;
-
-                          });*/
 
             var i;
             for (i = 0; i < dept_data.length; i++) {

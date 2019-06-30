@@ -64,10 +64,6 @@ export default {
 
 	  	    leaf.on("click", function(d){
 
-	  	       /* origin.department_name = d.data.key;
-
-	  	        origin.department_value = d.data.value;*/
-
 	  	        origin.$router.push({ 
 	  	            name: 'sector', 
 	  	            params: { sector_name: slugify(d.data.key) } 
