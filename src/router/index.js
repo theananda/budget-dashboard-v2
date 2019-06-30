@@ -31,7 +31,7 @@ export default new Router({
     },
     {
       name: 'sector',
-      path: '/sector/:slug',
+      path: '/sector/:sector_name',
       component: Sector
     }
   ]

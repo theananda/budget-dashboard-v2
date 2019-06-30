@@ -102,7 +102,7 @@ export default {
 
 				origin.$router.push({ 
 		            name: 'sector', 
-		            params: { slug: slugify(d.data.name) } 
+		            params: { sector_name: slugify(d.data.name) } 
 		        });
 			});
     	}	

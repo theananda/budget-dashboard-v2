@@ -39,7 +39,7 @@ export default {
     ],
     watch: {
         '$route' (to, from) {
-          this.sector = this.$route.params.slug;
+          this.sector = this.$route.params.sector_name;
           this.getData();
         }
     },
@@ -105,8 +105,8 @@ export default {
 				origin.department_value = d.data.value;
 
 				/*origin.$router.push({ 
-		            name: 'sector', 
-		            params: { slug: slugify(d.data.name) } 
+		            name: 'ministries', 
+		            params: { ministry_name: slugify(d.data.name) } 
 		        });*/
 			});
     	}	

@@ -22,3 +22,12 @@
 .region-chart-wrapper {
 	margin-top: 50px;
 }
+
+.ministry_wrapper {
+	text-align: center;
+}
+
+.ministry_wrapper svg {
+	width: 150px;
+	height: 150px;
+}
