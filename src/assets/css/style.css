@@ -36,3 +36,11 @@
 .ministry_wrapper svg circle {
 	cursor: pointer;
 }
+
+.year-selector {
+	text-align: center;
+}
+
+.fin-year-selector {
+	padding: 10px;
+}
