@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home.vue'
 import Region from '@/components/ByRegion.vue'
 import Sector from '@/components/BySector.vue'
+import Ministry from '@/components/BudgetEntry.vue'
 
 Vue.use(Router)
 
@@ -32,7 +33,7 @@ export default new Router({
     {
       name: 'sector',
       path: '/sector/:sector_name',
-      component: Sector
+      component: Ministry
     }
   ]
 })
