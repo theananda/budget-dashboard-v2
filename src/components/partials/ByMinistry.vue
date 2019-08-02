@@ -58,9 +58,11 @@ export default {
 
 	  	    const origin = this;
 
+          const color = chroma.random();
+
 	  	    leaf.append("circle")
 	  	        .attr("r", d => d.r)
-	  	        .attr("fill", d => chroma.random());
+	  	        .attr("fill", color);
 
 	  	    leaf.on("click", function(d){
 
