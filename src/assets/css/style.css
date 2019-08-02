@@ -25,9 +25,14 @@
 
 .ministry_wrapper {
 	text-align: center;
+	position: relative;
 }
 
 .ministry_wrapper svg {
 	width: 150px;
 	height: 150px;
+}
+
+.ministry_wrapper svg circle {
+	cursor: pointer;
 }

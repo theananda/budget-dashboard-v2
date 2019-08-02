@@ -1,5 +1,5 @@
 <template>
-	<div class="mdl-cell mdl-cell--4-col ministry_wrapper">
+	<div class="mdl-cell mdl-cell--4-col ministry_wrapper" :id="wrapperID">
 		<svg :id='selector'
 			:height='height'
 			:width='width'
@@ -58,7 +58,7 @@ export default {
 
 	  	    const origin = this;
 
-          const color = chroma.random();
+          const color = chroma.random(); 
 
 	  	    leaf.append("circle")
 	  	        .attr("r", d => d.r)
@@ -70,7 +70,48 @@ export default {
 	  	            name: 'sector', 
 	  	            params: { sector_name: slugify(d.data.key) } 
 	  	        });
+
 	  	    });
+
+          var tooltip = d3.select('#'+ this.wrapperID)
+                      .append("div")
+                      .style("position", "absolute")
+                      .style("opacity", 0)
+                      .attr("class", "tooltip")
+                      .style("background-color", "black")
+                      .style("border-radius", "5px")
+                      .style("padding", "10px")
+                      .style("color", "white");
+
+
+          var showTooltip = function(d) {
+              tooltip
+                .transition()
+                .duration(200)
+              tooltip
+                .style("opacity", 1)
+                .html(d.data.key + "<br>" + d.data.value + " million kyats")
+                .style("left", (d3.mouse(this)[0]+20) + "px")
+                .style("top", (d3.mouse(this)[1]+20) + "px")
+            }
+            var moveTooltip = function(d) {
+              tooltip
+                .style("left", (d3.mouse(this)[0]+20) + "px")
+                .style("top", (d3.mouse(this)[1]+20) + "px")
+            }
+            var hideTooltip = function(d) {
+              tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0)
+            }
+
+
+          leaf.on("mouseover", showTooltip )
+              .on("mousemove", moveTooltip )
+              .on("mouseleave", hideTooltip );
+
+
   		}   
   	},
   	computed: {
@@ -83,7 +124,10 @@ export default {
       	},
       	svgSelector() {
       		return '#' + this.selector;
-      	}
+      	},
+        wrapperID() {
+          return this.selector + "-wrapper";
+        }
   	}
 }
 </script>
