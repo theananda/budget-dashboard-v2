@@ -108,7 +108,8 @@ export default {
 					})
 				  	.rollup(function(v) { 
 				  		return d3.sum(v, function(d) { 
-				  			return d.value; 
+                            var f = d3.format(".2f");
+				  			return f(d.value); 
 				  		}); 
 				  	})
 				  .object(data);
