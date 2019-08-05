@@ -6,49 +6,9 @@
         <div class="mdl-cell mdl-cell--12-col region-chart-wrapper">
             <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--12-col year-selector">
-                    <router-link :to="{ name: 'sectors', params: { fin_year: 2019 }}" class="fin-year-selector">
-                        <span class="mdl-chip mdl-color--teal mdl-color-text--white">
-                            <span class="mdl-chip__text">2019</span>
-                        </span>    
-                    </router-link>
-                    <router-link :to="{ name: 'sectors', params: { fin_year: '2018 Interim' }}" class="fin-year-selector">
-                        <span class="mdl-chip">
-                            <span class="mdl-chip__text">2018 Interim</span>
-                        </span>    
-                    </router-link>
-                    <router-link :to="{ name: 'sectors', params: { fin_year: 2018 }}" class="fin-year-selector">
-                        <span class="mdl-chip">
-                            <span class="mdl-chip__text">2018</span>
-                        </span>    
-                    </router-link>
-                    <router-link :to="{ name: 'sectors', params: { fin_year: 2017 }}" class="fin-year-selector">
-                        <span class="mdl-chip">
-                            <span class="mdl-chip__text">2017</span>
-                        </span>    
-                    </router-link>
-                    <router-link :to="{ name: 'sectors', params: { fin_year: 2016 }}" class="fin-year-selector">
-                        <span class="mdl-chip">
-                            <span class="mdl-chip__text">2016</span>
-                        </span>    
-                    </router-link>
-                    <router-link :to="{ name: 'sectors', params: { fin_year: 2015 }}" class="fin-year-selector">
-                        <span class="mdl-chip">
-                            <span class="mdl-chip__text">2015</span>
-                        </span>    
-                    </router-link>
-                    <router-link :to="{ name: 'sectors', params: { fin_year: 2014 }}" class="fin-year-selector">
-                        <span class="mdl-chip">
-                            <span class="mdl-chip__text">2014</span>
-                        </span>    
-                    </router-link>
-                    <router-link :to="{ name: 'sectors', params: { fin_year: 2013 }}" class="fin-year-selector">
-                        <span class="mdl-chip">
-                            <span class="mdl-chip__text">2013</span>
-                        </span>    
-                    </router-link>
-                    <router-link :to="{ name: 'sectors', params: { fin_year: 2012 }}" class="fin-year-selector">
-                        <span class="mdl-chip">
-                            <span class="mdl-chip__text">2012</span>
+                    <router-link v-for="year in fin_years" :to="{ name: 'sectors', params: { fin_year: year }}" class="fin-year-selector">
+                        <span class="mdl-chip" :class="[year == current_fin_year ? 'mdl-color--teal mdl-color-text--white' : '']">
+                            <span class="mdl-chip__text">{{ year }}</span>
                         </span>    
                     </router-link>
                 </div>
@@ -86,6 +46,18 @@ export default {
                 flow : 'expenditure',
                 fin_year : this.$route.params.fin_year
             },
+            current_fin_year : 2019,
+            fin_years : [
+                2019,
+                '2018 Interim',
+                2018,
+                2017,
+                2016,
+                2015,
+                2014,
+                2013,
+                2012
+            ],
             sector_data : [],
             department_data : []
     	}
@@ -93,6 +65,7 @@ export default {
     watch: {
         '$route' (to, from) {
           this.api_params.fin_year = this.$route.params.fin_year;
+          this.current_fin_year = this.$route.params.fin_year;
           this.getData();
         }
     },
