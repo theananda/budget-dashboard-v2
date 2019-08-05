@@ -8,8 +8,7 @@ export default {
 		options: {
 			chart: {
 			  	id: 'expenditure-stacked',
-			  	stacked: true,
-			  	stackType: '100%'
+			  	stacked: true
 			},
 			dataLabels: {
                 enabled: false
@@ -27,8 +26,7 @@ export default {
 		options: {
 			chart: {
 			  	id: 'income-stacked',
-			  	stacked: true,
-			  	stackType: '100%'
+			  	stacked: true
 			},
 			dataLabels: {
                 enabled: false
