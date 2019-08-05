@@ -50,7 +50,6 @@ import VueApexCharts from 'vue-apexcharts'
 import chartConfigs from '@/config/charts.js'
 import Axios from 'axios'
 import * as d3 from 'd3'
-import _ from 'lodash'
 import config from '@/config/index.js'
 
 export default {
