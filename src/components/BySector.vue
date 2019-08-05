@@ -92,15 +92,17 @@ export default {
         				  })
         				  .rollup(function(v) { 
         				  	return d3.sum(v, function(d) { 
-        				  		return d.value;
+                                var f = d3.format(".2f");
+                                return f(d.value); 
         				  	}); 
         				  })
         				  .entries(data)
         				  .map(function(group) { 
                             if (group.key != "") {
+                                var f = d3.format(".2f");
                                 return {
                                     name : group.key,
-                                    value : group.value
+                                    value : f(group.value)
                                 };
                             }
         				  })
@@ -117,7 +119,8 @@ export default {
                           })
                           .rollup(function(v) { 
                             return d3.sum(v, function(d) { 
-                                return d.value;
+                                var f = d3.format(".2f");
+                                return f(d.value); 
                             }); 
                           })
                           .entries(data);
