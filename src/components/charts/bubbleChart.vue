@@ -50,43 +50,43 @@ export default {
 			return packChart(this.packData).leaves();
 
 		},
-    	getData() {
-    		const api_url = config.api_url + "/budget?budget_level=Union&flow=expenditure";
-    		Axios.get(api_url)
-    		    .then(response => {
+		getData() {
+			const api_url = config.api_url + "/budget?budget_level=Union&flow=expenditure";
+			Axios.get(api_url)
+				.then(response => {
 
-    		    	this.chart_data = this.analyse(response.data.data);
+					this.chart_data = this.analyse(response.data.data);
 
-    		    	this.renderChart();
+					this.renderChart();
 
-    		});
-    	},
-    	analyse(data) {
-    		return d3.nest()
+			});
+		},
+		analyse(data) {
+			return d3.nest()
 				  .key(function(d) { 
-				  	return d.sector;
+					return d.sector;
 				  })
 				  .rollup(function(v) { 
-				  	return d3.sum(v, function(d) { 
-				  		return d.value;
-				  	}); 
+					return d3.sum(v, function(d) { 
+						return d.value;
+					}); 
 				  })
 				  .entries(data)
 				  .map(function(group) { 
-				  	return {
-				  		name : group.key,
-				  		value : group.value
-				  	};
+					return {
+						name : group.key,
+						value : group.value
+					};
 				  });
 			
-    	},
-    	renderChart() {
+		},
+		renderChart() {
 
-	    	const leaf = d3.select("#sector")
+			const leaf = d3.select("#sector")
 							.selectAll("g")
 							.data(this.packChart)
 							.join("g")
-				      		.attr("transform", d => `translate(${d.x + 1},${d.y + 1})`);
+							.attr("transform", d => `translate(${d.x + 1},${d.y + 1})`);
 
 			const origin = this;
 
@@ -101,11 +101,11 @@ export default {
 				origin.department_value = d.data.value;
 
 				origin.$router.push({ 
-		            name: 'sector', 
-		            params: { sector_name: slugify(d.data.name) } 
-		        });
+					name: 'sector', 
+					params: { sector_name: slugify(d.data.name) } 
+				});
 			});
-    	}	
+		}	
 	},
 	computed: {
 		packData() {

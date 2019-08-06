@@ -9,14 +9,14 @@
 import VueApexCharts from 'vue-apexcharts';
 
 export default {
-    name: 'BarStacked',
-    components: {
-        'apexchart' : VueApexCharts
-    },
-    props: [
-    	'options',
-    	'series'
-    ]
+	name: 'BarStacked',
+	components: {
+		'apexchart' : VueApexCharts
+	},
+	props: [
+		'options',
+		'series'
+	]
 }
 
 </script>

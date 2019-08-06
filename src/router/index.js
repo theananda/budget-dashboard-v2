@@ -9,31 +9,31 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    { 
-      name: 'home',
-      path: '/', 
-      component: Home 
-    },
-    {
-      name: 'union', 
-      path: '/regions', 
-      component: Region 
-    },
-    {
-      name: 'state_region', 
-      path: '/region/:pcode', 
-      component: Region, 
-      props: true
-    },
-    { 
-      name: 'sectors',
-      path: '/:fin_year/sectors', 
-      component: Sector 
-    },
-    {
-      name: 'sector',
-      path: '/:fin_year/sector/:sector_name',
-      component: Ministry
-    }
+	{ 
+	  name: 'home',
+	  path: '/', 
+	  component: Home 
+	},
+	{
+	  name: 'union', 
+	  path: '/regions', 
+	  component: Region 
+	},
+	{
+	  name: 'state_region', 
+	  path: '/region/:pcode', 
+	  component: Region, 
+	  props: true
+	},
+	{ 
+	  name: 'sectors',
+	  path: '/:fin_year/sectors', 
+	  component: Sector 
+	},
+	{
+	  name: 'sector',
+	  path: '/:fin_year/sector/:sector_name',
+	  component: Ministry
+	}
   ]
 })
