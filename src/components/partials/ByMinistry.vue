@@ -34,8 +34,15 @@ export default {
   		'height',
   		'selector'
   	],
+    watch: {
+        '$route' (to, from) {
+          this.removeChart();
+          this.renderChart(); 
+        }
+    },
   	mounted() {
-  		if (this.chart_data) {
+  		if (this.cdata) {
+
   			this.renderChart();	
   		}
   	},
@@ -48,6 +55,11 @@ export default {
 	  	    return packChart(this.packData).leaves();
 
   		},
+      removeChart() {
+        d3.select(this.svgSelector)
+          .selectAll("g")
+          .remove();
+      },
   		renderChart() {
 
 	  	    const leaf = d3.select(this.svgSelector)
@@ -116,7 +128,7 @@ export default {
   	},
   	computed: {
       	packData() {
-          	return d3.hierarchy({children: this.chart_data})
+          	return d3.hierarchy({children: this.cdata})
                       .sum(d => d.value);
       	},
       	output() {

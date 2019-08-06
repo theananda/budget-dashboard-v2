@@ -46,7 +46,7 @@ export default {
                 flow : 'expenditure',
                 fin_year : this.$route.params.fin_year
             },
-            current_fin_year : 2019,
+            current_fin_year : this.$route.params.fin_year,
             fin_years : [
                 2019,
                 '2018 Interim',
@@ -126,9 +126,12 @@ export default {
                           .entries(data);
 
             var i;
+            var ddata = []
             for (i = 0; i < dept_data.length; i++) {
-                this.department_data[dept_data[i]['key']] = dept_data[i]['values'];
+                ddata[dept_data[i]['key']] = dept_data[i]['values'];
             }
+
+            this.department_data = ddata;
 
 			
     	},
