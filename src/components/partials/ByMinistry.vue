@@ -80,7 +80,7 @@ export default {
 
 				origin.$router.push({ 
 					name: 'sector', 
-					params: { sector_name: slugify(d.data.key) } 
+					params: { sector_name: d.data.key } 
 				});
 
 			});
