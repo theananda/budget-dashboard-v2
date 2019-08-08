@@ -5,6 +5,9 @@
 		</div>
 		<div class="mdl-cell mdl-cell--12-col region-chart-wrapper">
 			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--12-col">
+					<h2 class="center-title">Union Expenditure by Sectors</h2>
+				</div>
 				<div class="mdl-cell mdl-cell--12-col year-selector">
 					<router-link v-for="year in fin_years" :to="{ name: 'sectors', params: { fin_year: year }}" class="fin-year-selector">
 						<span class="mdl-chip" :class="[year == current_fin_year ? 'mdl-color--teal mdl-color-text--white' : '']">
