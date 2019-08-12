@@ -102,6 +102,7 @@ export default {
 				.duration(200)
 			  tooltip
 				.style("opacity", 1)
+				.style("z-index", 999)
 				.html(d.data.key + "<br>" + d.data.value + " million kyats")
 				.style("left", (d3.mouse(this)[0]+20) + "px")
 				.style("top", (d3.mouse(this)[1]+20) + "px")
@@ -116,6 +117,7 @@ export default {
 				.transition()
 				.duration(200)
 				.style("opacity", 0)
+				.style("z-index", -999)
 			}
 
 
