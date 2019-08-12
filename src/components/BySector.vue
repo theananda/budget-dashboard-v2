@@ -5,8 +5,10 @@
 		</div>
 		<div class="mdl-cell mdl-cell--12-col region-chart-wrapper">
 			<div class="mdl-grid">
-				<div class="mdl-cell mdl-cell--12-col">
-					<h2 class="center-title">Union Expenditure by Sectors</h2>
+				<div class="mdl-cell mdl-cell--12-col center-content">
+					<div class="mdl-textfield mdl-js-textfield">
+						<v-select :options="budget_levels" v-model="current_budget_level"></v-select>
+					</div>
 				</div>
 				<div class="mdl-cell mdl-cell--12-col year-selector">
 					<router-link v-for="year in fin_years" :to="{ name: 'sectors', params: { fin_year: year }}" class="fin-year-selector">
@@ -45,11 +47,19 @@ export default {
 			department_name: '',
 			department_value: '',
 			api_params : {
-				budget_level : 'Union',
+				budget_level : this.$route.params.budget_level,
 				flow : 'expenditure',
 				fin_year : this.$route.params.fin_year
 			},
 			current_fin_year : this.$route.params.fin_year,
+			current_budget_level : this.$route.params.budget_level,
+			budget_levels : [
+				'Union',
+				'Kachin',
+				'Kayah',
+				'Kayin',
+				'Chin'
+			],
 			fin_years : [
 				2019,
 				'2018 Interim',
@@ -67,9 +77,18 @@ export default {
 	},
 	watch: {
 		'$route' (to, from) {
-		  this.api_params.fin_year = this.$route.params.fin_year;
-		  this.current_fin_year = this.$route.params.fin_year;
+		  this.setApiParams();
 		  this.getData();
+		},
+		current_budget_level (val) {
+			console.log(val);
+			this.$router.push({ 
+				name: 'sectors', 
+				params: { 
+					budget_level: val,
+					fin_year: this.current_fin_year
+				} 
+			});
 		}
 	},
 	beforeMount() {
@@ -86,6 +105,12 @@ export default {
 					this.analyse(response.data.data);
 
 			});
+		},
+		setApiParams() {
+			this.api_params.fin_year = this.$route.params.fin_year;
+			this.api_params.budget_level = this.$route.params.budget_level;
+			this.current_fin_year = this.$route.params.fin_year;
+			this.current_budget_level = this.$route.params.budget_level;
 		},
 		analyse(data) {
 

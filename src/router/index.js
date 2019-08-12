@@ -27,12 +27,12 @@ export default new Router({
 	},
 	{ 
 	  name: 'sectors',
-	  path: '/:fin_year/sectors', 
+	  path: '/:fin_year/:budget_level/sectors', 
 	  component: Sector 
 	},
 	{
 	  name: 'sector',
-	  path: '/:fin_year/sector/:sector_name',
+	  path: '/:fin_year/:budget_level/sector/:sector_name',
 	  component: Ministry
 	}
   ]
