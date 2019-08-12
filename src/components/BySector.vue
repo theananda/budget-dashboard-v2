@@ -26,7 +26,6 @@
 
 <script>
 
-import BubbleChart from './charts/bubbleChart.vue'
 import config from '@/config/index.js'
 import Axios from 'axios'
 import * as d3 from "d3"
@@ -36,7 +35,6 @@ import slugify from '@sindresorhus/slugify'
 export default {
 	name: 'Sectors',
 	components: {
-	   'bubble-chart' : BubbleChart,
 	   'ministry' : Ministry
 	},
 	data() {
@@ -55,10 +53,20 @@ export default {
 			current_budget_level : this.$route.params.budget_level,
 			budget_levels : [
 				'Union',
-				'Kachin',
+				'Ayeyawady',
+				'Bago',
+				'Chin',
+				'KaChin',
 				'Kayah',
 				'Kayin',
-				'Chin'
+				'Magway',
+				'Mandalay',
+				'Mon',
+				'Rakhine',
+				'Sagaing',
+				'Shan',
+				'Tanintharyi',
+				'Yangon'
 			],
 			fin_years : [
 				2019,
