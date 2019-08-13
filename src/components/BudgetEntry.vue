@@ -14,7 +14,7 @@
 					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200"></bubble-chart>		
 				</div>
 				<div class="mdl-cell mdl-cell--9-col">
-					
+					<flow-type></flow-type>
 				</div>
 			</div>
 		</div>
@@ -27,12 +27,14 @@ import config from '@/config/index.js'
 import Axios from 'axios'
 import * as d3 from "d3"
 import BubbleChart from './charts/BubbleChart.vue'
+import FlowType from './partials/FlowType.vue'
 import slugify from '@sindresorhus/slugify'
 
 export default {
 	name: 'Departments',
 	components: {
-	   'bubble-chart' : BubbleChart
+	   'bubble-chart' : BubbleChart,
+	   'flow-type' : FlowType
 	},
 	data() {
 		return {
