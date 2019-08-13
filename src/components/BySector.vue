@@ -89,7 +89,6 @@ export default {
 		  this.getData();
 		},
 		current_budget_level (val) {
-			console.log(val);
 			this.$router.push({ 
 				name: 'sectors', 
 				params: { 
