@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home.vue'
 import Region from '@/components/ByRegion.vue'
 import Sector from '@/components/BySector.vue'
-import Ministry from '@/components/BudgetEntry.vue'
+import BudgetEntry from '@/components/BudgetEntry.vue'
 
 Vue.use(Router)
 
@@ -33,7 +33,12 @@ export default new Router({
 	{
 	  name: 'sector',
 	  path: '/:fin_year/:budget_level/sector/:sector_name',
-	  component: Ministry
+	  component: BudgetEntry
+	},
+	{
+	  name: 'budget_entry',
+	  path: '/:fin_year/:budget_level/sector/:sector_name/:budget_entry',
+	  component: BudgetEntry
 	}
   ]
 })
