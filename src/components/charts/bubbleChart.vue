@@ -1,122 +1,117 @@
 <template>
-	<div class="department-wrapper mdl-grid">
-		<div class="mdl-cell mdl-cell--6-col">
-			<svg id="sector"
-				:height='height'
-				:width='width'
-			>
-			</svg>
-		</div>
-		<departments :name='department_name' :value='department_value' />
+	<div :id="wrapperID">
+		<svg :id='selector'
+			:height='height'
+			:width='width'
+		>
+			<g
+			      v-for="d in output"
+			      :transform="`translate(${d.x + 1},${d.y + 1})`"
+			    >
+			      <circle
+			        :r="d.r"
+			        :fill="color"
+			        v-on:click="circleClick(d)"
+			        v-on:mouseover="circleMouseOver(d)"
+			        v-on:mouseleave="circleMouseLeave(d)"
+			      />
+			</g>
+		</svg>
+		<div :id="tooltipID" class="tooltip"></div>
 	</div>
 </template>
 
 <script>
 
-import Axios from 'axios'
 import * as d3 from "d3"
-import config from '@/config/index.js'
 import chroma from 'chroma-js'
 import slugify from '@sindresorhus/slugify'
-import Departments from '@/components/Departments.vue'
 
 export default {
-	name: "BubbleChart",
+
+	name: 'BubbleChart',
 	data() {
 		return {
-			chart_data : [],
-			width: 1000,
-			height: 1000,
-			department_name: '',
-			department_value: ''
+			tooltip : '',
+			color : this.randomColor
 		}
 	},
 	props: [
+		'name', 
+		'value', 
 		'cdata',
-		'clickroute'
+		'width',
+		'height',
+		'selector'
 	],
-	beforeMount() {
-		this.getData();
-	},
-	components: {
-	   'departments' : Departments
+	watch: {
+		'$route' (to, from) {
+		  
+		}
 	},
 	methods: {
 		packChart() {
 			const packChart = d3.pack()
-								.size([500, 500])
+								.size([this.width, this.height])
 								.padding(10);
 
 			return packChart(this.packData).leaves();
 
 		},
-		getData() {
-			const api_url = config.api_url + "/budget?budget_level=Union&flow=expenditure";
-			Axios.get(api_url)
-				.then(response => {
+		removeChart() {
+			d3.select(this.svgSelector)
+			  .selectAll("g")
+			  .remove();
+		},
+		d3Actions() {
 
-					this.chart_data = this.analyse(response.data.data);
-
-					this.renderChart();
-
+		},
+		circleClick(d) {
+			this.$router.push({ 
+				name: 'budget_entry', 
+				params: { 
+					fin_year: this.$route.params.fin_year,
+					budget_level: this.$route.params.budget_level,
+					sector_name: this.$route.params.sector_name,
+					budget_entry: d.data.key
+				} 
 			});
 		},
-		analyse(data) {
-			return d3.nest()
-				  .key(function(d) { 
-					return d.sector;
-				  })
-				  .rollup(function(v) { 
-					return d3.sum(v, function(d) { 
-						return d.value;
-					}); 
-				  })
-				  .entries(data)
-				  .map(function(group) { 
-					return {
-						name : group.key,
-						value : group.value
-					};
-				  });
-			
+		circleMouseOver(d){
+			d3.select('#' + this.tooltipID)
+				.style("opacity", 1)
+				.style("z-index", 999)
+				.html(d.data.key + "<br>" + d.data.value + " million kyats")
+				/*.style("left", (d3.mouse(this)[0]+20) + "px")
+				.style("top", (d3.mouse(this)[1]+20) + "px")*/
 		},
-		renderChart() {
+		circleMouseLeave(d){
+			d3.select('#' + this.tooltipID)
+				.style("opacity", 0)
+				.style("z-index", -999)
+		}
 
-			const leaf = d3.select("#sector")
-							.selectAll("g")
-							.data(this.packChart)
-							.join("g")
-							.attr("transform", d => `translate(${d.x + 1},${d.y + 1})`);
-
-			const origin = this;
-
-			leaf.append("circle")
-				.attr("r", d => d.r)
-				.attr("fill", d => chroma.random());
-
-			leaf.on("click", function(d){
-
-				origin.department_name = d.data.name;
-
-				origin.department_value = d.data.value;
-
-				origin.$router.push({ 
-					name: 'sector', 
-					params: { sector_name: slugify(d.data.name) } 
-				});
-			});
-		}	
 	},
 	computed: {
 		packData() {
-			return d3.hierarchy({children: this.chart_data})
-						.sum(d => d.value);
+			return d3.hierarchy({children: this.cdata})
+					  .sum(d => d.value);
 		},
 		output() {
-
-		  return this.packChart();
+			return this.packChart();
+		},
+		randomColor() {
+			return chroma.random(); 
+		},
+		svgSelector() {
+			return '#' + this.selector;
+		},
+		wrapperID() {
+		  return this.selector + "-wrapper";
+		},
+		tooltipID() {
+			return this.selector + "-tooltip";
 		}
 	}
 }
-	
 </script>

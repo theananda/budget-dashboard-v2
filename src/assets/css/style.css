@@ -27,7 +27,7 @@
 	position: fixed;
 }
 
-.region-chart-wrapper {
+.region-chart-wrapper, .chart-wrapper {
 	margin-top: 50px;
 }
 
@@ -51,4 +51,15 @@
 
 .fin-year-selector {
 	padding: 10px;
+}
+
+.tooltip {
+	background-color: #000;
+	color: #fff;
+	border-radius: 3px;
+	padding: 5px 10px;
+	position: absolute;
+	text-align: center;
+	opacity: 0;
+	z-index: -999;
 }
