@@ -21,11 +21,6 @@ import slugify from '@sindresorhus/slugify'
 export default {
 
 	name: 'ByMinistry',
-	data () {
-		return {
-			chart_data : this.cdata
-		}
-	},
 	props: [
 		'name', 
 		'value', 
@@ -41,10 +36,12 @@ export default {
 		}
 	},
 	mounted() {
+
 		if (this.cdata) {
 
 			this.renderChart(); 
 		}
+
 	},
 	methods: {
 		packChart() {
