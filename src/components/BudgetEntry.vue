@@ -1,12 +1,23 @@
 <template>
 	<div class="mdl-grid">
 		<div class="mdl-cell mdl-cell--12-col toolbar">
-			<router-link to="/2019/sectors" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Back to Sectors</router-link>
+			<router-link 
+				to="/2019/Union/sectors" 
+				class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+				Back to Sectors
+			</router-link>
 		</div>
-		<div class="mdl-cell mdl-cell--12-col region-chart-wrapper">
-			<h4>{{ this.sector }}</h4>
+		<div class="mdl-cell mdl-cell--12-col chart-wrapper">
+			<h4 class="center-title">{{ api_params.fin_year }} - {{ api_params.budget_level }} - {{ api_params.flow }} - {{ api_params.parent_ministry }}</h4>
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--3-col chart-wrapper">
+					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200"></bubble-chart>		
+				</div>
+				<div class="mdl-cell mdl-cell--9-col">
+					
+				</div>
+			</div>
 		</div>
-		<div v-for="k in chart_data">{{ k.key }} - {{ k.value }}</div>
 	</div>
 </template>
 
@@ -15,20 +26,32 @@
 import config from '@/config/index.js'
 import Axios from 'axios'
 import * as d3 from "d3"
+import BubbleChart from './charts/BubbleChart.vue'
+import slugify from '@sindresorhus/slugify'
 
 export default {
 	name: 'Departments',
+	components: {
+	   'bubble-chart' : BubbleChart
+	},
 	data() {
 		return {
 			sector: this.$route.params.sector_name,
 			api_params : {
-				//budget_level : 'Union',
-				//flow : 'expenditure',
+				budget_level : this.$route.params.budget_level,
+				flow : 'expenditure',
 				fin_year : this.$route.params.fin_year,
 				parent_ministry : this.$route.params.sector_name
 			},
 			current_fin_year: this.$route.params.fin_year,
-			chart_data: []
+			current_budget_level: this.$route.params.budget_level,
+			chart_data: [],
+			bubble_data: [],
+		}
+	},
+	watch: {
+		'$route' (to, from) {
+
 		}
 	},
 	beforeMount () {
@@ -42,36 +65,28 @@ export default {
 			})
 				.then(response => {
 
-					console.log(response.data.data);
+					this.analyse(response.data.data);
 
-					var chart_data = this.analyse(response.data.data);
-
-					var union_data = chart_data.Union
-
-					console.log(chart_data);
 			});
 		},
 		analyse(data) {
 
-			return d3.nest()
-					.key(function(d){
-						return d.budget_level;
-					})
+			this.bubble_data = d3.nest()
 					.key(function(d){
 						return d.budget_entry;
 					})
-					/*.rollup(function(v) { 
+					.rollup(function(v) { 
 						return d3.sum(v, function(d) { 
 							var f = d3.format(".2f");
 							return f(d.value); 
 						}); 
-					})*/
-					.object(data);
+					})
+					.entries(data);
 			
 		},
-	},
-	computed: {
-
+		slugify(val) {
+			return slugify(val);
+		}
 	}
 }
 
