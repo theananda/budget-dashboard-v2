@@ -56,7 +56,7 @@ export default {
 				'Ayeyawady',
 				'Bago',
 				'Chin',
-				'KaChin',
+				'Kachin',
 				'Kayah',
 				'Kayin',
 				'Magway',
@@ -89,6 +89,7 @@ export default {
 		  this.getData();
 		},
 		current_budget_level (val) {
+			this.getFinYears();
 			this.$router.push({ 
 				name: 'sectors', 
 				params: { 
@@ -100,6 +101,7 @@ export default {
 	},
 	beforeMount() {
 		this.getData();
+		this.getFinYears();
 	},
 	methods: {
 		getData() {
@@ -112,6 +114,22 @@ export default {
 					this.analyse(response.data.data);
 
 			});
+		},
+		getFinYears() {
+			Axios.get(config.api_url + "/budget/" + this.current_budget_level + "/years")
+				.then(response => {
+					this.fin_years = response.data.fin_years;
+					if (!this.fin_years.includes(this.current_fin_year)) {
+						this.current_fin_year = this.fin_years[0];
+						this.$router.push({ 
+							name: 'sectors', 
+							params: { 
+								budget_level: this.current_budget_level,
+								fin_year: this.current_fin_year
+							} 
+						});
+					}
+				});
 		},
 		setApiParams() {
 			this.api_params.fin_year = this.$route.params.fin_year;
