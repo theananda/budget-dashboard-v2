@@ -28,7 +28,7 @@
 import config from '@/config/index.js'
 import Axios from 'axios'
 import * as d3 from "d3"
-import BubbleChart from './charts/BubbleChart.vue'
+import BubbleChart from './charts/bubbleChart.vue'
 import FlowType from './partials/FlowType.vue'
 import slugify from '@sindresorhus/slugify'
 
