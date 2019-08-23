@@ -1,5 +1,5 @@
 <template>
-	<div :id="wrapperID">
+	<div :id="wrapperID" class="center-chart svg-wrapper">
 		<svg :id='selector'
 			:height='height'
 			:width='width'
