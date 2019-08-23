@@ -3,11 +3,11 @@
 		<div class="mdl-cell mdl-cell--12-col">
 			<h4>{{ this.$route.params.budget_entry }}</h4>
 		</div>
-		<div class="mdl-cell mdl-cell--6-col">
+		<div class="mdl-cell mdl-cell--6-col" v-if="this.analysed_data[this.current_fin_year]['income']">
 			<h5 class="center-title">{{ charts.income_flowtype.title }}</h5>
 			<apexchart :type="charts.income_flowtype.chart_type" width=380 :options="charts.income_flowtype.chartOptions" :series="charts.income_flowtype.series" />
 		</div>
-		<div class="mdl-cell mdl-cell--6-col">
+		<div class="mdl-cell mdl-cell--6-col" v-if="this.analysed_data[this.current_fin_year]['expenditure']">
 			<h5 class="center-title">{{ charts.expenditure_flowtype.title }}</h5>
 			<apexchart :type="charts.expenditure_flowtype.chart_type" width=380 :options="charts.expenditure_flowtype.chartOptions" :series="charts.expenditure_flowtype.series" />
 		</div>
