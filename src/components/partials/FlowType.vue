@@ -3,11 +3,11 @@
 		<div class="mdl-cell mdl-cell--12-col">
 			<h4>{{ this.$route.params.budget_entry }}</h4>
 		</div>
-		<div class="mdl-cell mdl-cell--6-col" v-if="this.analysed_data[this.current_fin_year]['income']">
+		<div class="mdl-cell mdl-cell--6-col" v-if="charts.income_flowtype.display">
 			<h5 class="center-title">{{ charts.income_flowtype.title }}</h5>
 			<apexchart :type="charts.income_flowtype.chart_type" width=380 :options="charts.income_flowtype.chartOptions" :series="charts.income_flowtype.series" />
 		</div>
-		<div class="mdl-cell mdl-cell--6-col" v-if="this.analysed_data[this.current_fin_year]['expenditure']">
+		<div class="mdl-cell mdl-cell--6-col" v-if="charts.expenditure_flowtype.display">
 			<h5 class="center-title">{{ charts.expenditure_flowtype.title }}</h5>
 			<apexchart :type="charts.expenditure_flowtype.chart_type" width=380 :options="charts.expenditure_flowtype.chartOptions" :series="charts.expenditure_flowtype.series" />
 		</div>
@@ -46,6 +46,7 @@ export default {
 			analysed_data : {},
 			charts : {
 				income_flowtype : {
+					display: true,
 					title : 'Income by Flow Type',
 					chart_type : 'donut',
 			        series: [],
@@ -61,6 +62,7 @@ export default {
 			    	}
 				},
 				expenditure_flowtype : {
+					display: true,
 					title : 'Expenditure by Flow Type',
 					chart_type : 'donut',
 			        series: [],
@@ -97,6 +99,8 @@ export default {
 						}
 
 						this.charts.income_flowtype.series = this.prepareForChart(this.analysed_data[this.current_fin_year]['income']).series;
+					} else {
+						this.charts.income_flowtype.display = false;
 					}
 
 					
@@ -108,6 +112,8 @@ export default {
 
 						this.charts.expenditure_flowtype.series = this.prepareForChart(this.analysed_data[this.current_fin_year]['expenditure']).series;
 
+					} else {
+						this.charts.income_flowtype.display = false;
 					}
 					
 			});
