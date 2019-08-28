@@ -10,9 +10,7 @@
 		<div class="mdl-cell mdl-cell--12-col chart-wrapper">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--3-col parent-ministry-wrapper">
-					<h4 class="center-title">{{ api_params.parent_ministry }}</h4>
-					<h5 class="center-title">
-					{{ api_params.fin_year }} - {{ api_params.budget_level }} - {{ api_params.flow }}</h5>
+					<h5 class="center-title">{{ pageTitle }}</h5>
 					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200"></bubble-chart>		
 				</div>
 				<div class="mdl-cell mdl-cell--9-col">
@@ -90,6 +88,11 @@ export default {
 		},
 		slugify(val) {
 			return slugify(val);
+		}
+	},
+	computed: {
+		pageTitle() {
+			return this.api_params.fin_year + " " + this.api_params.budget_level + " " + this.api_params.flow;
 		}
 	}
 }
