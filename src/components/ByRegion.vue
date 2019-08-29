@@ -17,8 +17,13 @@
 							<div class="mdl-cell mdl-cell--6-col single-viz">
 								<apexchart :width="charts.expenditure.width" :height="charts.expenditure.height" :type="charts.expenditure.type" :options="charts.expenditure.options" :series="charts.expenditure.series"></apexchart>     
 							</div>
-							<div class="mdl-cell mdl-cell--6-col viz-description" v-html="this.charts.expenditure.viz_desc">
-								{{ this.charts.expenditure.viz_desc }}
+							<div class="mdl-cell mdl-cell--6-col viz-description">
+								<h4>Current Expenditure</h4>
+								<p>General government expenditure for small expenses such as salary payments, pension funds, employee benefit calculations, treasury bonds and money raised to pay tickets on domestic and foreign debt interest paid on savings.</p>
+								<h4>Capital Expenditure</h4>
+								<p>Investments in assets that will last for more than a year, such as vehicles; repair and maintenance expense for buildings and roads, except military expenses.</p>
+								<p><strong>Reference: <a href="https://asiafoundation.org/publication/public-financial-management-glossary-terms/" target="_blank">Public Finance Management Glossary and Terms, The Asia Foundation</a></strong></p>
+								<p><em>Note: We use standard shorthand for Financial Year. For example, by “2019”, we means “2018-19 FY”</em></p>
 							</div>  
 						</div>
 					</div>
@@ -31,8 +36,17 @@
 							<div class="mdl-cell mdl-cell--6-col single-viz">
 								<apexchart :width="charts.income.width" :height="charts.income.height" :type="charts.income.type" :options="charts.income.options" :series="charts.income.series"></apexchart>      
 							</div>
-							<div class="mdl-cell mdl-cell--6-col viz-description" v-html="this.charts.income.viz_desc">
-								{{ this.charts.income.viz_desc }}
+							<div class="mdl-cell mdl-cell--6-col viz-description">
+								<h4>Financial Revenue</h4>
+								<p>Includes revenues from taxes, fees and charges, earnings from state economic enterprises, sale of assets and local and international borrowings.</p>
+								<h4>Capital Revenue</h4>
+								<p>Revenues from sale of assets, receipts from private funds, and receipts from foreign aid.</p>
+								<h4>Grants</h4>
+								<p>A grant is a voluntary current or capital transfer between government units, or between a multinational organisation and a national government. In addition, a voluntary transfer to a private organisation or person is also called grant. Grant are treated as expenditure by the granting institution and revenue by the recipient insitution.</p>
+								<h4>Own Source Revenue</h4>
+								<p>The revenue that the local government raises directly by levying taxes, fees and charges from land, business activities and provision of services, excluding inter-governmental fiscal transfers.</p>
+								<p><strong>Reference: <a href="https://asiafoundation.org/publication/public-financial-management-glossary-terms/" target="_blank">Public Finance Management Glossary and Terms, The Asia Foundation</a></strong></p>
+								<p><em>Note: We use standard shorthand for Financial Year. For example, by “2019”, we means “2018-19 FY”</em></p>
 							</div>  
 						</div>
 					</div>
