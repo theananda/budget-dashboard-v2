@@ -13,6 +13,13 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Oswald', sans-serif;
 }
 
+.ananda_logo {
+	text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
 .home_wrapper {
 	height: 100vh;
 	color: #fff;
@@ -23,7 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 .shadow {
 	width: 100%;
 	height: 100vh;
-	background: #0000004d;
+	background: rgba(0,0,0,0.4)
 }
 
 .intro-wrapper {

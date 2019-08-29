@@ -8,7 +8,7 @@
   		  <router-link to="/2019/Union/sectors" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin:20px;">Explore by Sectors</router-link>  
         <div class="project-info">
           <p>This project is developed by</p>
-          <p class="ananda_logo"><img src="../assets/images/logo.png" height="50" width="50" alt="The Ānanda">The Ānanda</p>
+          <p class="ananda_logo"><a href="https://theananda.org" target="_blank"><img src="../assets/images/logo.png" height="50" width="50" alt="The Ānanda">The Ānanda</a></p>
           <p>and funded by <a href="https://asiafoundation.org/where-we-work/myanmar/" target="_blank">The Asia Foundation</a></p> 
         </div>
   		</div>
