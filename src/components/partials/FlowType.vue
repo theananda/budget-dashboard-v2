@@ -5,6 +5,9 @@
 		</div>
 		<div class="mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--12-col">
+					<h4 class="center-title colored-title">{{ this.$route.params.fin_year }} {{ this.$route.params.budget_level }} Income & Expenditure</h4>
+				</div>
 				<div class="mdl-cell mdl-cell--6-col" v-if="charts.income_flowtype.display">
 					<h5 class="center-title">{{ charts.income_flowtype.title }}</h5>
 					<apexchart :type="charts.income_flowtype.chart_type" width=380 :options="charts.income_flowtype.chartOptions" :series="charts.income_flowtype.series" />
@@ -17,6 +20,9 @@
 		</div>
 		<div class="mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--12-col">
+					<h4 class="center-title colored-title">Yearly Income & Expenditure</h4>
+				</div>
 				<div class="mdl-cell mdl-cell--6-col">
 					<h5 class="center-title">{{ charts.expenditure_by_year.title }}</h5>
 					<apexchart :width="charts.expenditure_by_year.width" :height="charts.expenditure_by_year.height" :type="charts.expenditure_by_year.type" :options="charts.expenditure_by_year.options" :series="charts.expenditure_by_year.series"></apexchart>  

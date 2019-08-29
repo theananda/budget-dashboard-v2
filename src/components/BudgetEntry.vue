@@ -92,7 +92,7 @@ export default {
 	},
 	computed: {
 		pageTitle() {
-			return this.api_params.fin_year + " " + this.api_params.budget_level + " " + this.api_params.flow;
+			return this.api_params.fin_year + " " + this.api_params.budget_level + " " + this.api_params.flow + " by ministry";
 		}
 	}
 }

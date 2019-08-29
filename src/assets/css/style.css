@@ -13,7 +13,11 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Oswald', sans-serif;
 }
 
-.ananda_logo {
+.colored-title {
+	color: #ff6e40;
+}
+
+.ananda_logo a {
 	text-decoration: none;
     color: #fff;
     font-weight: bold;
