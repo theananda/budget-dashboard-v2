@@ -1,10 +1,10 @@
 <template>
-	<div class="mdl-grid">
+	<div class="mdl-grid main-page-wrapper">
 		<div class="mdl-cell mdl-cell--12-col toolbar">
 			<router-link 
 				to="/2019/Union/sectors" 
-				class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-				Back to Sectors
+				class="mdl-button mdl-js-button">
+				<i class="material-icons">arrow_back_ios</i> Back to Sectors
 			</router-link>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col chart-wrapper">

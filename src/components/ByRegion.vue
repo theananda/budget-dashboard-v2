@@ -1,7 +1,9 @@
 <template>
-	<div class="region-wrapper mdl-grid">
+	<div class="region-wrapper mdl-grid main-page-wrapper">
 		<div class="mdl-cell mdl-cell--12-col toolbar">
-			<router-link to="/" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Back</router-link>
+			<router-link to="/" class="mdl-button mdl-js-button">
+				<i class="material-icons">arrow_back_ios</i> Back
+			</router-link>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col viz-area">
 			<div class="mdl-cell mdl-cell--3-col map-wrapper">
