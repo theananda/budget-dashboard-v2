@@ -4,6 +4,7 @@
 			<router-link to="/" class="mdl-button mdl-js-button">
 				<i class="material-icons">arrow_back_ios</i> Back
 			</router-link>
+			<data-download-btn></data-download-btn>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col viz-area">
 			<div class="mdl-cell mdl-cell--3-col map-wrapper">
@@ -67,12 +68,14 @@ import chartConfigs from '@/config/charts.js'
 import Axios from 'axios'
 import * as d3 from 'd3'
 import config from '@/config/index.js'
+import DataDownload from '@/components/partials/DataDownload.vue'
 
 export default {
 	name: 'MapExplorer',
 	components: {
 		'map-explorer' : MapEx,
 		'apexchart' : VueApexCharts,
+		'data-download-btn': DataDownload
 	},
 	data () {
 		return {

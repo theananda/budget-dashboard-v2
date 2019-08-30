@@ -109,12 +109,16 @@ h1, h2, h3, h4, h5, h6 {
 	height: 150px;
 }
 
-.ministry_wrapper svg circle {
+.ministry_wrapper svg circle, .svg-wrapper svg circle {
 	cursor: pointer;
 }
 
 .year-selector {
 	text-align: center;
+}
+
+.data-download-btn {
+	float: right;
 }
 
 .fin-year-selector {

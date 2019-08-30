@@ -6,6 +6,7 @@
 				class="mdl-button mdl-js-button">
 				<i class="material-icons">arrow_back_ios</i> Back to All Sectors
 			</router-link>
+			<data-download-btn></data-download-btn>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col chart-wrapper" style="margin-left:unset;">
 			<div class="mdl-grid mdl-grid--no-spacing">
@@ -29,12 +30,14 @@ import * as d3 from "d3"
 import BubbleChart from './charts/bubbleChart.vue'
 import FlowType from './partials/FlowType.vue'
 import slugify from '@sindresorhus/slugify'
+import DataDownload from '@/components/partials/DataDownload.vue'
 
 export default {
 	name: 'Departments',
 	components: {
 	   'bubble-chart' : BubbleChart,
-	   'flow-type' : FlowType
+	   'flow-type' : FlowType,
+	   'data-download-btn': DataDownload
 	},
 	data() {
 		return {

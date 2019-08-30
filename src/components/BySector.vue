@@ -4,6 +4,7 @@
 			<router-link to="/" class="mdl-button mdl-js-button">
 				<i class="material-icons">arrow_back_ios</i> Back
 			</router-link>
+			<data-download-btn></data-download-btn>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col region-chart-wrapper">
 			<div class="mdl-grid">
@@ -36,11 +37,13 @@ import Axios from 'axios'
 import * as d3 from "d3"
 import Ministry from './partials/ByMinistry.vue'
 import slugify from '@sindresorhus/slugify'
+import DataDownload from '@/components/partials/DataDownload.vue'
 
 export default {
 	name: 'Sectors',
 	components: {
-	   'ministry' : Ministry
+	   'ministry' : Ministry,
+	   'data-download-btn': DataDownload
 	},
 	data() {
 		return {
