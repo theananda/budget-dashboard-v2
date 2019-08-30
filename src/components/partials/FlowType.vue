@@ -24,12 +24,12 @@
 					<h4 class="center-title colored-title">Yearly Income & Expenditure</h4>
 				</div>
 				<div class="mdl-cell mdl-cell--6-col">
-					<h5 class="center-title">{{ charts.expenditure_by_year.title }}</h5>
-					<apexchart :width="charts.expenditure_by_year.width" :height="charts.expenditure_by_year.height" :type="charts.expenditure_by_year.type" :options="charts.expenditure_by_year.options" :series="charts.expenditure_by_year.series"></apexchart>  
-				</div>
-				<div class="mdl-cell mdl-cell--6-col">
 					<h5 class="center-title">{{ charts.income_by_year.title }}</h5>
 					<apexchart :width="charts.income_by_year.width" :height="charts.income_by_year.height" :type="charts.income_by_year.type" :options="charts.income_by_year.options" :series="charts.income_by_year.series"></apexchart>  
+				</div>
+				<div class="mdl-cell mdl-cell--6-col">
+					<h5 class="center-title">{{ charts.expenditure_by_year.title }}</h5>
+					<apexchart :width="charts.expenditure_by_year.width" :height="charts.expenditure_by_year.height" :type="charts.expenditure_by_year.type" :options="charts.expenditure_by_year.options" :series="charts.expenditure_by_year.series"></apexchart>  
 				</div>
 			</div>
 		</div>
@@ -80,9 +80,15 @@ export default {
 
 					this.analysed_data = this.analyse(response.data.data);	
 
-					console.log(this.api_params);
+					console.log(this.analysed_data[this.current_fin_year]['income']);
 
-					if (this.analysed_data[this.current_fin_year]['income'] != undefined) {
+					if (this.analysed_data[this.current_fin_year]['income'] == undefined) {
+
+						this.charts.income_flowtype.display = false;
+
+					} else {
+
+						this.charts.income_flowtype.display = true;
 
 						this.charts.income_flowtype.chartOptions = {
 							labels : this.prepareForChart(this.analysed_data[this.current_fin_year]['income']).labels,
@@ -97,14 +103,16 @@ export default {
 
 						this.charts.income_flowtype.series = this.prepareForChart(this.analysed_data[this.current_fin_year]['income']).series;
 
-					} else {
-
-						this.charts.income_flowtype.display = false;
-
 					}
 
 					
-					if (this.analysed_data[this.current_fin_year]['expenditure'] != undefined) {
+					if (this.analysed_data[this.current_fin_year]['expenditure'] == undefined) {
+
+						this.charts.expenditure_flowtype.display = false;
+
+					} else {
+
+						this.charts.expenditure_flowtype.display = true;
 
 						this.charts.expenditure_flowtype.chartOptions = {
 							labels : this.prepareForChart(this.analysed_data[this.current_fin_year]['expenditure']).labels,
@@ -118,10 +126,6 @@ export default {
 						}
 
 						this.charts.expenditure_flowtype.series = this.prepareForChart(this.analysed_data[this.current_fin_year]['expenditure']).series;
-
-					} else {
-
-						this.charts.income_flowtype.display = false;
 
 					}
 
