@@ -19,6 +19,10 @@
 						</span>    
 					</router-link>
 				</div>
+				<div class="mdl-cell mdl-cell--12-col">
+					<h3 class="center-title colored-title">{{ pageTitle }} </h3>
+					<p class="info-text center-content">** Please note functional classifications are unofficial, categorized for ease of access for users, based on reports prepared by the Ministry of Planning and Finance. </p>
+				</div>
 				<ministry v-for="sector in sector_data" :name="sector.name" :value="sector.value" :cdata="department_data[sector.name]" :selector="slugify(sector.name)" :key="sector.name"></ministry>
 			</div>
 		</div>    
@@ -191,6 +195,11 @@ export default {
 		},
 		slugify(val) {
 			return slugify(val);
+		}
+	},
+	computed: {
+		pageTitle() {
+			return this.$route.params.fin_year + " " + this.$route.params.budget_level + " Expenditure"
 		}
 	}
 }

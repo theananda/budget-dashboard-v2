@@ -21,6 +21,11 @@ h1, h2, h3, h4, h5, h6 {
 	color: #ff6e40;
 }
 
+.info-text {
+	font-size: 1rem;
+	font-style: italic;
+}
+
 .ananda_logo a {
 	text-decoration: none;
     color: #fff;

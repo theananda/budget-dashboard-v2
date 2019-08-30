@@ -4,7 +4,7 @@
 			<router-link 
 				to="/2019/Union/sectors" 
 				class="mdl-button mdl-js-button">
-				<i class="material-icons">arrow_back_ios</i> Back to Sectors
+				<i class="material-icons">arrow_back_ios</i> Back to All Sectors
 			</router-link>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col chart-wrapper">
