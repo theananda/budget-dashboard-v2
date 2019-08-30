@@ -2,7 +2,7 @@
 	<div class="mdl-grid main-page-wrapper">
 		<div class="mdl-cell mdl-cell--12-col toolbar">
 			<router-link 
-				to="/2019/Union/sectors" 
+				:to="{ name: 'sectors', params: { fin_year : this.$route.params.fin_year, budget_level : this.$route.params.budget_level }}" 
 				class="mdl-button mdl-js-button">
 				<i class="material-icons">arrow_back_ios</i> Back to All Sectors
 			</router-link>
