@@ -7,13 +7,13 @@
 				<i class="material-icons">arrow_back_ios</i> Back to All Sectors
 			</router-link>
 		</div>
-		<div class="mdl-cell mdl-cell--12-col chart-wrapper">
-			<div class="mdl-grid">
+		<div class="mdl-cell mdl-cell--12-col chart-wrapper" style="margin-left:unset;">
+			<div class="mdl-grid mdl-grid--no-spacing">
 				<div class="mdl-cell mdl-cell--3-col parent-ministry-wrapper">
 					<h5 class="center-title">{{ pageTitle }}</h5>
 					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200"></bubble-chart>		
 				</div>
-				<div class="mdl-cell mdl-cell--9-col">
+				<div class="mdl-cell mdl-cell--9-col mdl-cell--3-offset">
 					<flow-type></flow-type>
 				</div>
 			</div>
@@ -92,7 +92,7 @@ export default {
 	},
 	computed: {
 		pageTitle() {
-			return this.api_params.fin_year + " " + this.api_params.budget_level + " " + this.api_params.flow + " by ministry";
+			return this.api_params.fin_year + " " + this.api_params.budget_level + " Expenditure by Ministry";
 		}
 	}
 }

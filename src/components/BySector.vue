@@ -199,7 +199,7 @@ export default {
 	},
 	computed: {
 		pageTitle() {
-			return this.$route.params.fin_year + " " + this.$route.params.budget_level + " Expenditure"
+			return this.$route.params.fin_year + " " + this.$route.params.budget_level + " Expenditure by Functional Classification"
 		}
 	}
 }

@@ -90,6 +90,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .parent-ministry-wrapper {
 	background-color: #f2f2f2;
+	position: fixed;
+	height: 100%;
+	padding-top: 22px;
 }
 
 .parent-ministry-wrapper .tooltip {
