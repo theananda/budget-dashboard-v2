@@ -6,7 +6,12 @@
 				class="mdl-button mdl-js-button">
 				<i class="material-icons">arrow_back_ios</i> Back to All Sectors
 			</router-link>
-			<data-download-btn></data-download-btn>
+			<div class="right-menus">
+				<router-link to="/regions" class="mdl-button mdl-js-button">
+					<i class="material-icons">map</i> Explore by Region
+				</router-link>
+				<data-download-btn></data-download-btn>	
+			</div>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col chart-wrapper" style="margin-left:unset;">
 			<div class="mdl-grid mdl-grid--no-spacing">

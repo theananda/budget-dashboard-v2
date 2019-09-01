@@ -4,7 +4,12 @@
 			<router-link to="/" class="mdl-button mdl-js-button">
 				<i class="material-icons">arrow_back_ios</i> Back
 			</router-link>
-			<data-download-btn></data-download-btn>
+			<div class="right-menus">
+				<router-link to="/regions" class="mdl-button mdl-js-button">
+					<i class="material-icons">map</i> Explore by Region
+				</router-link>
+				<data-download-btn></data-download-btn>	
+			</div>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col region-chart-wrapper">
 			<div class="mdl-grid">

@@ -4,7 +4,12 @@
 			<router-link to="/" class="mdl-button mdl-js-button">
 				<i class="material-icons">arrow_back_ios</i> Back
 			</router-link>
-			<data-download-btn></data-download-btn>
+			<div class="right-menus">
+				<router-link to="/2019/Union/sectors" class="mdl-button mdl-js-button">
+					<i class="material-icons">scatter_plot</i> Explore by Sectors
+				</router-link>
+				<data-download-btn></data-download-btn>	
+			</div>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col viz-area">
 			<div class="mdl-cell mdl-cell--3-col map-wrapper">
