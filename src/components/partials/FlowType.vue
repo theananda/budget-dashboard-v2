@@ -98,6 +98,13 @@ export default {
 				        	expandOnClick: true,
 				        	legend: {
 					            position: 'bottom'
+					        },
+					        tooltip: {
+					          y: {
+					            formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+					              return value + " millions kyats"
+					            }
+					          }
 					        }
 						}
 
@@ -122,6 +129,13 @@ export default {
 				        	expandOnClick: true,
 				        	legend: {
 					            position: 'bottom'
+					        },
+					        tooltip: {
+					          y: {
+					            formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+					              return value + " millions kyats"
+					            }
+					          }
 					        }
 						}
 
