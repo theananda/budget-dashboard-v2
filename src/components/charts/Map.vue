@@ -1,6 +1,6 @@
 <template>
   <div>
-	<h4>{{ region }}</h4>
+	<h3 class="colored-title">{{ region }}</h3>
 	<l-map
 	  ref="interMap"
 	  :zoom="zoom"

@@ -1,19 +1,19 @@
 <template>
 	<div class="mdl-grid">
 		<div class="mdl-cell mdl-cell--12-col">
-			<h4>{{ this.$route.params.sector_name }} <span v-if="this.$route.params.budget_entry"> - {{ this.$route.params.budget_entry }}</span></h4>
+			<h3>{{ this.$route.params.sector_name }} <span v-if="this.$route.params.budget_entry"> - {{ this.$route.params.budget_entry }}</span></h3>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--12-col">
-					<h4 class="center-title colored-title">{{ this.$route.params.fin_year }} {{ this.$route.params.budget_level }} Income & Expenditure</h4>
+					<h3 class="center-title colored-title">{{ this.$route.params.fin_year }} {{ this.$route.params.budget_level }} Income & Expenditure</h3>
 				</div>
 				<div class="mdl-cell mdl-cell--6-col" v-if="charts.income_flowtype.display">
-					<h5 class="center-title">{{ charts.income_flowtype.title }}</h5>
+					<h4 class="center-title">{{ charts.income_flowtype.title }}</h4>
 					<apexchart :type="charts.income_flowtype.chart_type" width=380 :options="charts.income_flowtype.chartOptions" :series="charts.income_flowtype.series" />
 				</div>
 				<div class="mdl-cell mdl-cell--6-col" v-if="charts.expenditure_flowtype.display">
-					<h5 class="center-title">{{ charts.expenditure_flowtype.title }}</h5>
+					<h4 class="center-title">{{ charts.expenditure_flowtype.title }}</h4>
 					<apexchart :type="charts.expenditure_flowtype.chart_type" width=380 :options="charts.expenditure_flowtype.chartOptions" :series="charts.expenditure_flowtype.series" />
 				</div>
 			</div>	
@@ -21,14 +21,14 @@
 		<div class="mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--12-col">
-					<h4 class="center-title colored-title">Yearly Income & Expenditure</h4>
+					<h3 class="center-title colored-title">Yearly Income & Expenditure</h3>
 				</div>
 				<div class="mdl-cell mdl-cell--6-col">
-					<h5 class="center-title">{{ charts.income_by_year.title }}</h5>
+					<h4 class="center-title">{{ charts.income_by_year.title }}</h4>
 					<apexchart :width="charts.income_by_year.width" :height="charts.income_by_year.height" :type="charts.income_by_year.type" :options="charts.income_by_year.options" :series="charts.income_by_year.series"></apexchart>  
 				</div>
 				<div class="mdl-cell mdl-cell--6-col">
-					<h5 class="center-title">{{ charts.expenditure_by_year.title }}</h5>
+					<h4 class="center-title">{{ charts.expenditure_by_year.title }}</h4>
 					<apexchart :width="charts.expenditure_by_year.width" :height="charts.expenditure_by_year.height" :type="charts.expenditure_by_year.type" :options="charts.expenditure_by_year.options" :series="charts.expenditure_by_year.series"></apexchart>  
 				</div>
 			</div>
