@@ -81,7 +81,7 @@ export default {
 			d3.select('#' + this.tooltipID)
 				.style("opacity", 1)
 				.style("z-index", 999)
-				.html(d.data.key + "<br>" + d.data.value + " million kyats")
+				.html(d.data.key + "<br>" + d.data.value + " millions kyats")
 		},
 		circleMouseLeave(d){
 			d3.select('#' + this.tooltipID)

@@ -12,6 +12,13 @@ export default {
         	expandOnClick: true,
         	legend: {
 	            position: 'bottom'
+	        },
+	        tooltip: {
+	          y: {
+	            formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+	              return value + " millions kyats"
+	            }
+	          }
 	        }
     	}
 	},
@@ -28,7 +35,14 @@ export default {
 			legend: {
 	            position: 'bottom'
 	        },
-        	expandOnClick: true
+        	expandOnClick: true,
+        	tooltip: {
+        	  y: {
+        	    formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+        	      return value + " millions kyats"
+        	    }
+        	  }
+        	}
     	}
     },
 	expenditure_by_year : {
@@ -44,6 +58,13 @@ export default {
 			},
 			dataLabels: {
 				enabled: false
+			},
+			tooltip: {
+			  y: {
+			    formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+			      return value + " millions kyats"
+			    }
+			  }
 			}
 		},
 		series: [],
@@ -62,6 +83,13 @@ export default {
 			},
 			dataLabels: {
 				enabled: false
+			},
+			tooltip: {
+			  y: {
+			    formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+			      return value + " millions kyats"
+			    }
+			  }
 			}
 		},
 		series: [],

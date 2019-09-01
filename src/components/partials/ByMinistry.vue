@@ -100,7 +100,7 @@ export default {
 			  tooltip
 				.style("opacity", 1)
 				.style("z-index", 999)
-				.html(d.data.key + "<br>" + d.data.value + " million kyats")
+				.html(d.data.key + "<br>" + d.data.value + " millions kyats")
 				.style("left", (d3.mouse(this)[0]+20) + "px")
 				.style("top", (d3.mouse(this)[1]+20) + "px")
 			}

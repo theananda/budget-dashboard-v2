@@ -12,6 +12,13 @@ export default {
 			},
 			dataLabels: {
 				enabled: false
+			},
+			tooltip: {
+			  y: {
+			    formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+			      return value + " millions kyats"
+			    }
+			  }
 			}
 		},
 		series: [],
@@ -30,6 +37,13 @@ export default {
 			},
 			dataLabels: {
 				enabled: false
+			},
+			tooltip: {
+			  y: {
+			    formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+			      return value + " millions kyats"
+			    }
+			  }
 			}
 		},
 		series: [],
