@@ -13,6 +13,9 @@ export default {
 			dataLabels: {
 				enabled: false
 			},
+			yaxis: {
+				decimalsInFloat: 2
+			},
 			tooltip: {
 			  y: {
 			    formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
@@ -37,6 +40,9 @@ export default {
 			},
 			dataLabels: {
 				enabled: false
+			},
+			yaxis: {
+				decimalsInFloat: 2
 			},
 			tooltip: {
 			  y: {
