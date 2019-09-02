@@ -17,7 +17,8 @@ Vue.use(routerHistory)
 router.afterEach(writeHistory)
 
 Vue.use(VueAnalytics, {
-  id: config.google_analytic_id
+  id: config.google_analytic_id,
+  router
 })
 
 new Vue({
