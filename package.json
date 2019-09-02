@@ -19,6 +19,7 @@
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "vue": "^2.6.6",
+    "vue-analytics": "^5.17.2",
     "vue-apexcharts": "^1.3.4",
     "vue-router": "^3.0.6",
     "vue-router-back-button": "^1.2.2",
