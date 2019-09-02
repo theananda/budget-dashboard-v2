@@ -4,28 +4,46 @@
 			<router-link to="/" class="mdl-button mdl-js-button">
 				<i class="material-icons">arrow_back_ios</i> Back
 			</router-link>
-			<div class="right-menus">
+			<div class="right-menus mdl-layout--large-screen-only">
 				<router-link to="/2019/Union/sectors" class="mdl-button mdl-js-button">
 					<i class="material-icons">scatter_plot</i> Explore by Sectors
 				</router-link>
 				<data-download-btn></data-download-btn>	
 			</div>
+			<div class="mobile-right-menus mdl-layout--small-screen-only">
+				<button id="right-menu-block"
+				        class="mdl-button mdl-js-button mdl-button--icon">
+				  <i class="material-icons">more_vert</i>
+				</button>
+
+				<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+				    for="right-menu-block">
+				  <li class="mdl-menu__item">
+				  	<router-link to="/2019/Union/sectors" class="mdl-button mdl-js-button">
+				  		<i class="material-icons">scatter_plot</i> Explore by Sectors
+				  	</router-link>
+				  </li>
+				  <li class="mdl-menu__item">
+				  	<data-download-btn></data-download-btn>
+				  </li>
+				</ul>
+			</div>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col viz-area">
-			<div class="mdl-cell mdl-cell--3-col map-wrapper">
+			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone map-wrapper">
 				<map-explorer/>
 			</div>
-			<div class="mdl-cell mdl-cell--9-col mdl-cell--3-offset viz-wrapper">
+			<div class="mdl-cell mdl-cell--9-col mdl-cell--3-offset-desktop mdl-cell--3-offset-tablet mdl-cell--12-col-phone viz-wrapper">
 				<div class="mdl-grid">
 					<div class="chart_wrapper mdl-cell mdl-cell--12-col">
 						<div class="mdl-grid">
 							<div class="mdl-cell mdl-cell--12-col">
 								<h4>{{ this.charts.expenditure.title }}</h4>
 							</div>
-							<div class="mdl-cell mdl-cell--6-col single-viz">
+							<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone single-viz">
 								<apexchart :width="charts.expenditure.width" :height="charts.expenditure.height" :type="charts.expenditure.type" :options="charts.expenditure.options" :series="charts.expenditure.series"></apexchart>     
 							</div>
-							<div class="mdl-cell mdl-cell--6-col viz-description">
+							<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone viz-description">
 								<h5>Current Expenditure</h5>
 								<p>General government expenditure for small expenses such as salary payments, pension funds, employee benefit calculations, treasury bonds and money raised to pay tickets on domestic and foreign debt interest paid on savings.</p>
 								<h5>Capital Expenditure</h5>
@@ -41,10 +59,10 @@
 							<div class="mdl-cell mdl-cell--12-col">
 								<h4>{{ this.charts.income.title }}</h4>
 							</div>
-							<div class="mdl-cell mdl-cell--6-col single-viz">
+							<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone single-viz">
 								<apexchart :width="charts.income.width" :height="charts.income.height" :type="charts.income.type" :options="charts.income.options" :series="charts.income.series"></apexchart>      
 							</div>
-							<div class="mdl-cell mdl-cell--6-col viz-description">
+							<div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone viz-description">
 								<h5>Financial Revenue</h5>
 								<p>Includes revenues from taxes, fees and charges, earnings from state economic enterprises, sale of assets and local and international borrowings.</p>
 								<h5>Capital Revenue</h5>

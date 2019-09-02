@@ -2,7 +2,7 @@ export default {
 	expenditure : {
 		title: 'Expenditure by Budget Classification',
 		type: 'bar',
-		width: '500',
+		width: '100%',
 		height: '400',
 		position: 'left',
 		options: {
@@ -30,7 +30,7 @@ export default {
 	income : {
 		title: 'Income by Budget Classification',
 		type: 'bar',
-		width: '500',
+		width: '100%',
 		height: '400',
 		position: 'left',
 		options: {

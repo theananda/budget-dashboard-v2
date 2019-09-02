@@ -6,20 +6,38 @@
 				class="mdl-button mdl-js-button">
 				<i class="material-icons">arrow_back_ios</i> Back to All Sectors
 			</router-link>
-			<div class="right-menus">
+			<div class="right-menus mdl-layout--large-screen-only">
 				<router-link to="/regions" class="mdl-button mdl-js-button">
 					<i class="material-icons">map</i> Explore by Region
 				</router-link>
 				<data-download-btn></data-download-btn>	
 			</div>
+			<div class="mobile-right-menus mdl-layout--small-screen-only">
+				<button id="right-menu-block"
+				        class="mdl-button mdl-js-button mdl-button--icon">
+				  <i class="material-icons">more_vert</i>
+				</button>
+
+				<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+				    for="right-menu-block">
+				  <li class="mdl-menu__item">
+				  	<router-link to="/regions" class="mdl-button mdl-js-button">
+				  		<i class="material-icons">map</i> Explore by Region
+				  	</router-link>
+				  </li>
+				  <li class="mdl-menu__item">
+				  	<data-download-btn></data-download-btn>
+				  </li>
+				</ul>
+			</div>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col chart-wrapper" style="margin-left:unset;">
 			<div class="mdl-grid mdl-grid--no-spacing">
-				<div class="mdl-cell mdl-cell--3-col parent-ministry-wrapper">
+				<div class="mdl-cell mdl-cell--3-col  mdl-cell--12-col-phone parent-ministry-wrapper mdl-layout--large-screen-only">
 					<h3 class="center-title colored-title" v-html="pageTitle"></h3>
 					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200"></bubble-chart>		
 				</div>
-				<div class="mdl-cell mdl-cell--9-col mdl-cell--3-offset">
+				<div class="mdl-cell mdl-cell--9-col mdl-cell--3-offset-desktop mdl-cell--3-offset-tablet mdl-cell--12-col-phone">
 					<flow-type></flow-type>
 				</div>
 			</div>

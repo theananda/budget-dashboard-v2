@@ -116,7 +116,7 @@ h6 {
 	background-color: #f2f2f2;
 	position: fixed;
 	height: 100%;
-	padding-top: 22px;
+	padding-top: 17px;
 }
 
 .parent-ministry-wrapper .tooltip {
@@ -141,8 +141,16 @@ h6 {
 	text-align: center;
 }
 
-.right-menus {
+.right-menus, .mobile-right-menus {
 	float: right;
+}
+
+.mobile-right-menus {
+	display:none;
+}
+
+.mobile-right-menus a {
+	color: #ff6e40;
 }
 
 .fin-year-selector {
@@ -177,4 +185,26 @@ h6 {
 	position: absolute;
     bottom: 20px;
     right: 30px;
+}
+
+/* Media Query */
+
+/* Phones */
+@media (max-width: 480px) {
+	.intro-wrapper {
+		padding: 50px 30px 0 30px;
+		top: unset;
+	}
+	.right-menus {
+		display:none;
+	}
+
+	.mobile-right-menus {
+		display: inline-block;
+	}
+
+	.mdl-layout--large-screen-only {
+		display: none;
+	}
+
 }

@@ -48,7 +48,7 @@ export default {
 	expenditure_by_year : {
 		title: 'Expenditure by Budget Classification',
 		type: 'bar',
-		width: '500',
+		width: '100%',
 		height: '400',
 		position: 'left',
 		options: {
@@ -76,7 +76,7 @@ export default {
 	income_by_year : {
 		title: 'Income by Budget Classification',
 		type: 'bar',
-		width: '500',
+		width: '100%',
 		height: '400',
 		position: 'left',
 		options: {

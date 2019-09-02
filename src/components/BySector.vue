@@ -4,11 +4,29 @@
 			<router-link to="/" class="mdl-button mdl-js-button">
 				<i class="material-icons">arrow_back_ios</i> Back
 			</router-link>
-			<div class="right-menus">
+			<div class="right-menus mdl-layout--large-screen-only">
 				<router-link to="/regions" class="mdl-button mdl-js-button">
 					<i class="material-icons">map</i> Explore by Region
 				</router-link>
 				<data-download-btn></data-download-btn>	
+			</div>
+			<div class="mobile-right-menus mdl-layout--small-screen-only">
+				<button id="right-menu-block"
+				        class="mdl-button mdl-js-button mdl-button--icon">
+				  <i class="material-icons">more_vert</i>
+				</button>
+
+				<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+				    for="right-menu-block">
+				  <li class="mdl-menu__item">
+				  	<router-link to="/regions" class="mdl-button mdl-js-button">
+				  		<i class="material-icons">map</i> Explore by Region
+				  	</router-link>
+				  </li>
+				  <li class="mdl-menu__item">
+				  	<data-download-btn></data-download-btn>
+				  </li>
+				</ul>
 			</div>
 		</div>
 		<div class="mdl-cell mdl-cell--12-col region-chart-wrapper">
@@ -184,7 +202,7 @@ export default {
 							  	if (nameA > nameB) {
 							    	return 1;
 							  	}
-							  	
+
 							  	return 0;
 							});
 

@@ -9,6 +9,7 @@
 	  style="height: 600px"
 	  @update:center="centerUpdate"
 	  @update:zoom="zoomUpdate"
+	  class="mdl-layout--large-screen-only"
 	>
 	  <l-tile-layer
 		:url="url"
