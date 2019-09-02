@@ -174,7 +174,20 @@ export default {
 						  })
 						  .filter(function(el){
 							return el != null;
-						  });
+						  })
+						  .sort(function(a, b) {
+							  	var nameA = a.name.toUpperCase(); 
+							  	var nameB = b.name.toUpperCase(); 
+							  	if (nameA < nameB) {
+							    	return -1;
+							  	}
+							  	if (nameA > nameB) {
+							    	return 1;
+							  	}
+							  	
+							  	return 0;
+							});
+
 
 			var dept_data = d3.nest()
 						  .key(function(d) { 
