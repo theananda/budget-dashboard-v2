@@ -1,7 +1,7 @@
 export default {
 	income_flowtype : {
 		display: true,
-		title : 'Income by Flow Type',
+		title : 'Income by Budget Classification',
 		chart_type : 'donut',
         series: [],
         chartOptions: {
@@ -24,7 +24,7 @@ export default {
 	},
 	expenditure_flowtype : {
 		display: true,
-		title : 'Expenditure by Flow Type',
+		title : 'Expenditure by Budget Classification',
 		chart_type : 'donut',
         series: [],
         chartOptions: {

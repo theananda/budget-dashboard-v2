@@ -16,7 +16,7 @@
 		<div class="mdl-cell mdl-cell--12-col chart-wrapper" style="margin-left:unset;">
 			<div class="mdl-grid mdl-grid--no-spacing">
 				<div class="mdl-cell mdl-cell--3-col parent-ministry-wrapper">
-					<h3 class="center-title colored-title">{{ pageTitle }}</h3>
+					<h3 class="center-title colored-title" v-html="pageTitle"></h3>
 					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200"></bubble-chart>		
 				</div>
 				<div class="mdl-cell mdl-cell--9-col mdl-cell--3-offset">
@@ -100,7 +100,7 @@ export default {
 	},
 	computed: {
 		pageTitle() {
-			return this.api_params.fin_year + " " + this.api_params.budget_level + " Expenditure by Ministry";
+			return "Expenditure from <br/>" + this.api_params.fin_year + " " + this.api_params.budget_level + " Government";
 		}
 	}
 }

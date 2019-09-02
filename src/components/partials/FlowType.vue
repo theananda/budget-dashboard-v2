@@ -6,7 +6,7 @@
 		<div class="mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--12-col">
-					<h3 class="center-title colored-title">{{ this.$route.params.fin_year }} {{ this.$route.params.budget_level }} Income & Expenditure</h3>
+					<h3 class="center-title colored-title">{{ this.$route.params.fin_year }}  Income & Expenditure</h3>
 				</div>
 				<div class="mdl-cell mdl-cell--6-col" v-if="charts.income_flowtype.display">
 					<h4 class="center-title">{{ charts.income_flowtype.title }}</h4>
