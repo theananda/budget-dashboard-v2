@@ -67,15 +67,17 @@ export default {
 
 		},
 		circleClick(d) {
-			this.$router.push({ 
-				name: 'budget_entry', 
-				params: { 
-					fin_year: this.$route.params.fin_year,
-					budget_level: this.$route.params.budget_level,
-					sector_name: this.$route.params.sector_name,
-					budget_entry: d.data.key
-				} 
-			});
+			if (this.$route.params.sector_name != d.data.key) {
+				this.$router.push({ 
+					name: 'budget_entry', 
+					params: { 
+						fin_year: this.$route.params.fin_year,
+						budget_level: this.$route.params.budget_level,
+						sector_name: this.$route.params.sector_name,
+						budget_entry: d.data.key
+					} 
+				});
+			}
 		},
 		circleMouseOver(d){
 			d3.select('#' + this.tooltipID)
