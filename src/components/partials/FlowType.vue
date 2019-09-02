@@ -80,8 +80,6 @@ export default {
 
 					this.analysed_data = this.analyse(response.data.data);	
 
-					console.log(this.analysed_data[this.current_fin_year]['income']);
-
 					if (this.analysed_data[this.current_fin_year]['income'] == undefined) {
 
 						this.charts.income_flowtype.display = false;
@@ -214,6 +212,8 @@ export default {
 			var series_arr = [];
 
 			var categories = [];
+
+			categories = categories.sort();
 
 			Object.keys(data).forEach(function(key) {
 
