@@ -213,7 +213,7 @@ export default {
 
 			var categories = [];
 
-			categories = categories.sort();
+			//categories = categories.sort();
 
 			Object.keys(data).forEach(function(key) {
 

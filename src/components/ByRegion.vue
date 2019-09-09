@@ -172,7 +172,7 @@ export default {
 
 			});
 
-			categories = categories.sort();
+			//categories = categories.sort();
 
 			var i;
 			for (i = 0; i < series_arr.length; i++) {
