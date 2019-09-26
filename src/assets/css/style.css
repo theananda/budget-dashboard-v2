@@ -199,6 +199,9 @@ h6 {
 		text-align: right;
 		padding: 20px;
 	}
+	.map-wrapper {
+		position: unset;
+	}
 	.home_wrapper {
 		height: unset;
 	}

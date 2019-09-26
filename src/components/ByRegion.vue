@@ -104,7 +104,24 @@ export default {
 		return {
 			region : 'Union',
 			charts : chartConfigs,
-			raw_data : []
+			raw_data : [],
+			budget_levels : [
+				'Union',
+				'Ayeyawady',
+				'Bago',
+				'Chin',
+				'Kachin',
+				'Kayah',
+				'Kayin',
+				'Magway',
+				'Mandalay',
+				'Mon',
+				'Rakhine',
+				'Sagaing',
+				'Shan',
+				'Tanintharyi',
+				'Yangon'
+			],
 		}
 	},
 	watch: {

@@ -1,27 +1,33 @@
 <template>
   <div>
-	<h3 class="colored-title">{{ region }}</h3>
-	<l-map
-	  ref="interMap"
-	  :zoom="zoom"
-	  :center="center"
-	  :options="mapOptions"
-	  style="height: 600px"
-	  @update:center="centerUpdate"
-	  @update:zoom="zoomUpdate"
-	  class="mdl-layout--large-screen-only"
-	>
-	  <l-tile-layer
-		:url="url"
-		:attribution="attribution"
-	  />
-	  <l-geo-json
-		ref="stMapLayer"
-		:geojson="stMap.geojson"
-		:options="stMap.options"
-	  >
-	  </l-geo-json>
-	</l-map>
+  	<div class="mdl-layout--large-screen-only">
+  		<h3 class="colored-title">{{ region }}</h3>
+  		<l-map
+  		  ref="interMap"
+  		  :zoom="zoom"
+  		  :center="center"
+  		  :options="mapOptions"
+  		  style="height: 600px"
+  		  @update:center="centerUpdate"
+  		  @update:zoom="zoomUpdate"
+  		>
+  		  <l-tile-layer
+  			:url="url"
+  			:attribution="attribution"
+  		  />
+  		  <l-geo-json
+  			ref="stMapLayer"
+  			:geojson="stMap.geojson"
+  			:options="stMap.options"
+  		  >
+  		  </l-geo-json>
+  		</l-map>	
+  	</div>
+	<div class="mdl-layout--small-screen-only center-content">
+		<div class="mdl-textfield mdl-js-textfield">
+			<v-select :options="budget_levels" v-model="region"></v-select>
+		</div>
+	</div>
   </div>
 </template>
 
@@ -40,7 +46,7 @@ export default {
   },
   data () {
 	return {
-	  region: 'Union',
+	  region: this.$route.params.pcode,
 	  zoom: 5,
 	  center: L.latLng(20.081847,96.5488883),
 	  url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
@@ -64,8 +70,33 @@ export default {
 		  },
 		  onEachFeature: this.onEachFeature
 		}
-	  }
+	  },
+	  budget_levels : [
+	  	'Union',
+	  	'Ayeyawady',
+	  	'Bago',
+	  	'Chin',
+	  	'Kachin',
+	  	'Kayah',
+	  	'Kayin',
+	  	'Magway',
+	  	'Mandalay',
+	  	'Mon',
+	  	'Rakhine',
+	  	'Sagaing',
+	  	'Shan',
+	  	'Tanintharyi',
+	  	'Yangon'
+	  ],
 	};
+  },
+  watch: {
+  	region (val) {
+	  this.$router.push({ 
+		name: 'state_region', 
+		params: { pcode: val } 
+	  })
+  	}
   },
   methods: {
 	onEachFeature(feature, layer) {
