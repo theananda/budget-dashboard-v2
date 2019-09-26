@@ -181,18 +181,33 @@ h6 {
 	z-index: -999;
 }
 
-.photo-credit {
-	position: absolute;
-    bottom: 20px;
-    right: 30px;
-}
-
 /* Media Query */
 
+/* Desktop & Tablet */
+@media (min-width: 640px) {
+	.photo-credit {
+		position: absolute;
+	    bottom: 20px;
+	    right: 30px;
+	}
+}
+
 /* Phones */
-@media (max-width: 480px) {
+@media (max-width: 640px) {
+	.photo-credit {
+		position: unset;
+		text-align: right;
+		padding: 20px;
+	}
+	.home_wrapper {
+		height: unset;
+	}
+	.shadow {
+		height: unset;
+	}
 	.intro-wrapper {
-		padding: 50px 30px 0 30px;
+		position: unset;
+		padding: 50px 30px;
 		top: unset;
 	}
 	.right-menus {
