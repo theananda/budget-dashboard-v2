@@ -35,9 +35,14 @@
 			<div class="mdl-grid mdl-grid--no-spacing">
 				<div class="mdl-cell mdl-cell--3-col  mdl-cell--12-col-phone parent-ministry-wrapper mdl-layout--large-screen-only">
 					<h3 class="center-title colored-title" v-html="pageTitle"></h3>
-					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200"></bubble-chart>		
+					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200"></bubble-chart>
 				</div>
 				<div class="mdl-cell mdl-cell--9-col mdl-cell--3-offset-desktop mdl-cell--3-offset-tablet mdl-cell--12-col-phone">
+					<div class="center-content mdl-layout--small-screen-only">
+						<div class="mdl-textfield mdl-js-textfield">
+							<v-select :options="entrySelector" v-model="current_budget_entry" placeholder="-- Select Budget Entry --"></v-select>
+						</div>
+					</div>
 					<flow-type></flow-type>
 				</div>
 			</div>
@@ -75,11 +80,31 @@ export default {
 			current_budget_level: this.$route.params.budget_level,
 			chart_data: [],
 			bubble_data: [],
+			current_budget_entry: ''
 		}
 	},
 	watch: {
-		'$route' (to, from) {
-
+		current_budget_entry(val) {
+			if (val != null && this.$route.params.sector_name != val) {
+				this.$router.push({ 
+					name: 'budget_entry', 
+					params: { 
+						fin_year: this.$route.params.fin_year,
+						budget_level: this.$route.params.budget_level,
+						sector_name: this.$route.params.sector_name,
+						budget_entry: val
+					} 
+				});
+			} else {
+				this.$router.push({ 
+					name: 'sector', 
+					params: { 
+						fin_year: this.$route.params.fin_year,
+						budget_level: this.$route.params.budget_level,
+						sector_name: this.$route.params.sector_name,
+					} 
+				});
+			}
 		}
 	},
 	beforeMount () {
@@ -119,6 +144,11 @@ export default {
 	computed: {
 		pageTitle() {
 			return "Expenditure from <br/>" + this.api_params.fin_year + " " + this.api_params.budget_level + " Government";
+		},
+		entrySelector() {
+			return this.bubble_data.map(function(x){
+				return x.key;
+			});
 		}
 	}
 }

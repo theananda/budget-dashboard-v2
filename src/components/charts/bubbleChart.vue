@@ -44,11 +44,6 @@ export default {
 		'height',
 		'selector'
 	],
-	watch: {
-		'$route' (to, from) {
-		  
-		}
-	},
 	methods: {
 		packChart() {
 			const packChart = d3.pack()
