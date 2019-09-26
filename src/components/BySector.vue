@@ -5,7 +5,7 @@
 				<i class="material-icons">arrow_back_ios</i> Back
 			</router-link>
 			<div class="right-menus mdl-layout--large-screen-only">
-				<router-link to="/regions" class="mdl-button mdl-js-button">
+				<router-link to="/region/Union" class="mdl-button mdl-js-button">
 					<i class="material-icons">map</i> Explore by Region
 				</router-link>
 				<data-download-btn></data-download-btn>	
