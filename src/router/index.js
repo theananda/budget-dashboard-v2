@@ -15,11 +15,6 @@ export default new Router({
 	  component: Home 
 	},
 	{
-	  name: 'union', 
-	  path: '/regions', 
-	  component: Region 
-	},
-	{
 	  name: 'state_region', 
 	  path: '/region/:pcode', 
 	  component: Region, 
