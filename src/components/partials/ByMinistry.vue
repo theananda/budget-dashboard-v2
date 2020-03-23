@@ -17,7 +17,8 @@
 import * as d3 from "d3"
 import chroma from 'chroma-js'
 import slugify from '@sindresorhus/slugify'
-import numeral from 'numeral';
+import numeral from 'numeral'
+import colors from '@/config/colors.js'
 
 export default {
 
@@ -68,7 +69,7 @@ export default {
 
 			const origin = this;
 
-		  const color = chroma.random(); 
+		  const color = colors.sectors[this.name];
 
 			leaf.append("circle")
 				.attr("r", d => d.r)

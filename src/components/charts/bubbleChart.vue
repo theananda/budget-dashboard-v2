@@ -28,13 +28,13 @@ import chroma from 'chroma-js'
 import slugify from '@sindresorhus/slugify'
 import numeral from 'numeral';
 
+
 export default {
 
 	name: 'BubbleChart',
 	data() {
 		return {
-			tooltip : '',
-			color : this.randomColor
+			tooltip : ''
 		}
 	},
 	props: [
@@ -43,7 +43,8 @@ export default {
 		'cdata',
 		'width',
 		'height',
-		'selector'
+		'selector',
+		'color'
 	],
 	methods: {
 		packChart() {
@@ -95,9 +96,6 @@ export default {
 		},
 		output() {
 			return this.packChart();
-		},
-		randomColor() {
-			return chroma.random(); 
 		},
 		svgSelector() {
 			return '#' + this.selector;

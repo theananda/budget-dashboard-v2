@@ -35,7 +35,7 @@
 			<div class="mdl-grid mdl-grid--no-spacing">
 				<div class="mdl-cell mdl-cell--3-col  mdl-cell--12-col-phone parent-ministry-wrapper mdl-layout--large-screen-only">
 					<h3 class="center-title colored-title" v-html="pageTitle"></h3>
-					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200"></bubble-chart>
+					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200" :color="getParentSectorColor"></bubble-chart>
 				</div>
 				<div class="mdl-cell mdl-cell--9-col mdl-cell--3-offset-desktop mdl-cell--3-offset-tablet mdl-cell--12-col-phone">
 					<div class="center-content mdl-layout--small-screen-only">
@@ -59,6 +59,7 @@ import BubbleChart from './charts/bubbleChart.vue'
 import FlowType from './partials/FlowType.vue'
 import slugify from '@sindresorhus/slugify'
 import DataDownload from '@/components/partials/DataDownload.vue'
+import colors from '@/config/colors.js'
 
 export default {
 	name: 'Departments',
@@ -80,7 +81,8 @@ export default {
 			current_budget_level: this.$route.params.budget_level,
 			chart_data: [],
 			bubble_data: [],
-			current_budget_entry: ''
+			current_budget_entry: '',
+			parent_sector : ''
 		}
 	},
 	watch: {
@@ -121,8 +123,10 @@ export default {
 					if(response.data.data.length == 0) {
 
 						this.$router.push({ name: 'home' });
-						
+
 					}
+
+					this.parent_sector = response.data.data[0].sector;
 
 					this.analyse(response.data.data);
 
@@ -155,6 +159,9 @@ export default {
 			return this.bubble_data.map(function(x){
 				return x.key;
 			});
+		},
+		getParentSectorColor() {
+			return colors.sectors[this.parent_sector];
 		}
 	}
 }
