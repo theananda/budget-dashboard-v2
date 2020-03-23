@@ -118,6 +118,12 @@ export default {
 			})
 				.then(response => {
 
+					if(response.data.data.length == 0) {
+
+						this.$router.push({ name: 'home' });
+						
+					}
+
 					this.analyse(response.data.data);
 
 			});

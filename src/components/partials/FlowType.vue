@@ -79,6 +79,12 @@ export default {
 			})
 				.then(response => {
 
+					if(response.data.data.length == 0) {
+
+						this.$router.push({ name: 'home' });
+						
+					}
+
 					this.analysed_data = this.analyse(response.data.data);	
 
 					if (this.analysed_data[this.current_fin_year]['income'] == undefined) {

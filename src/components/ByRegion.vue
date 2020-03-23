@@ -133,7 +133,14 @@ export default {
 	beforeMount () {
 
 		if (this.$route.params.pcode) {
+
 			this.region = this.$route.params.pcode;
+
+			if (!this.budget_levels.includes(this.region)) {
+
+				this.$router.push({ name: 'home' });
+
+			}
 		}
 
 		this.getData();
