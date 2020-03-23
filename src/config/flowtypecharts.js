@@ -1,3 +1,5 @@
+import numeral from 'numeral';
+
 export default {
 	income_flowtype : {
 		display: true,
@@ -16,7 +18,7 @@ export default {
 	        tooltip: {
 	          y: {
 	            formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
-	              return value + " millions kyats"
+	              return numeral(value).format('0,0.00') + " millions kyats"
 	            }
 	          }
 	        }
@@ -39,7 +41,7 @@ export default {
         	tooltip: {
         	  y: {
         	    formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
-        	      return value + " millions kyats"
+        	      return numeral(value).format('0,0.00') + " millions kyats"
         	    }
         	  }
         	}
@@ -65,7 +67,7 @@ export default {
 			tooltip: {
 			  y: {
 			    formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
-			      return value + " millions kyats"
+			      return numeral(value).format('0,0.00') + " millions kyats"
 			    }
 			  }
 			}
@@ -93,7 +95,7 @@ export default {
 			tooltip: {
 			  y: {
 			    formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
-			      return value + " millions kyats"
+			      return numeral(value).format('0,0.00') + " millions kyats"
 			    }
 			  }
 			}

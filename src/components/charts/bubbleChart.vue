@@ -26,6 +26,7 @@
 import * as d3 from "d3"
 import chroma from 'chroma-js'
 import slugify from '@sindresorhus/slugify'
+import numeral from 'numeral';
 
 export default {
 
@@ -78,7 +79,7 @@ export default {
 			d3.select('#' + this.tooltipID)
 				.style("opacity", 1)
 				.style("z-index", 999)
-				.html(d.data.key + "<br>" + d.data.value + " millions kyats")
+				.html(d.data.key + "<br>" + numeral(d.data.value).format('0,0.00') + " millions kyats")
 		},
 		circleMouseLeave(d){
 			d3.select('#' + this.tooltipID)

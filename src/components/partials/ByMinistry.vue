@@ -7,7 +7,7 @@
 		</svg>
 		<div class="info">
 			<h4>{{ name }}</h4>
-			<p>{{ value }} millions kyats</p>
+			<p>{{ value | numFormat('0,0.00') }} millions kyats</p>
 		</div>
 	</div>
 </template>
@@ -17,6 +17,7 @@
 import * as d3 from "d3"
 import chroma from 'chroma-js'
 import slugify from '@sindresorhus/slugify'
+import numeral from 'numeral';
 
 export default {
 
@@ -100,7 +101,7 @@ export default {
 			  tooltip
 				.style("opacity", 1)
 				.style("z-index", 999)
-				.html(d.data.key + "<br>" + d.data.value + " millions kyats")
+				.html(d.data.key + "<br>" + numeral(d.data.value).format('0,0.00') + " millions kyats")
 				.style("left", (d3.mouse(this)[0]+20) + "px")
 				.style("top", (d3.mouse(this)[1]+20) + "px")
 			}

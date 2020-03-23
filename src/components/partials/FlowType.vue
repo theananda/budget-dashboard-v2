@@ -42,7 +42,8 @@ import config from '@/config/index.js'
 import Axios from 'axios'
 import * as d3 from "d3"
 import VueApexCharts from 'vue-apexcharts'
-import chartsConfig from '@/config/flowtypecharts.js'	
+import chartsConfig from '@/config/flowtypecharts.js'
+import numeral from 'numeral';	
 
 export default {
 	name: 'FlowType',
@@ -100,7 +101,7 @@ export default {
 					        tooltip: {
 					          y: {
 					            formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
-					              return value + " millions kyats"
+					              return numeral(value).format('0,0.00') + " millions kyats"
 					            }
 					          }
 					        }
@@ -131,7 +132,7 @@ export default {
 					        tooltip: {
 					          y: {
 					            formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
-					              return value + " millions kyats"
+					              return numeral(value).format('0,0.00') + " millions kyats"
 					            }
 					          }
 					        }
