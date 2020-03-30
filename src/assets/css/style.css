@@ -119,10 +119,6 @@ h6 {
 	padding-top: 17px;
 }
 
-.parent-ministry-wrapper .tooltip {
-	position: unset;
-}
-
 .ministry_wrapper {
 	text-align: center;
 	position: relative;
@@ -161,6 +157,10 @@ h6 {
 	padding: 20px;
 }
 
+.svg-wrapper .info {
+	text-align: center;
+}
+
 .center-chart svg {
 	margin: 0 auto;
     display: block;
@@ -175,10 +175,12 @@ h6 {
 	color: #fff;
 	border-radius: 3px;
 	padding: 5px 10px;
-	position: absolute;
 	text-align: center;
 	opacity: 0;
 	z-index: -999;
+	min-height: 50px;
+	width: 70%;
+	margin: auto;
 }
 
 /* Media Query */

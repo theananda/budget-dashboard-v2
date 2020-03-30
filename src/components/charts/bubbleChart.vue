@@ -1,5 +1,9 @@
 <template>
 	<div :id="wrapperID" :class="className">
+		<div class="info">
+			<h4>{{ name }}</h4>
+			<p>{{ value | numFormat('0,0.00') }} millions kyats</p>
+		</div>
 		<svg :id='selector'
 			:height='height'
 			:width='width'
@@ -18,10 +22,6 @@
 			</g>
 		</svg>
 		<div :id="tooltipID" class="tooltip"></div>
-		<div class="info">
-			<h4>{{ name }}</h4>
-			<p>{{ value | numFormat('0,0.00') }} millions kyats</p>
-		</div>
 	</div>
 </template>
 
