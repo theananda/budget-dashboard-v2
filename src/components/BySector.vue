@@ -47,7 +47,7 @@
 					<h3 class="center-title colored-title">{{ pageTitle }} </h3>
 					<p class="info-text center-content">** Please note functional classifications are unofficial, categorized for ease of access for users, based on reports prepared by the Ministry of Planning and Finance. </p>
 				</div>
-				<ministry v-for="sector in sector_data" :name="sector.name" :value="sector.value" :cdata="department_data[sector.name]" :selector="slugify(sector.name)" :key="sector.name"></ministry>
+				<bubble-chart v-for="sector in sector_data" :name="sector.name" :value="sector.value" :cdata="department_data[sector.name]" :selector="slugify(sector.name)" :width="150" :height="150" :color="getSectorColor(sector.name)"className="mdl-cell mdl-cell--4-col ministry_wrapper" clickRoute="sector"></bubble-chart>
 			</div>
 		</div>    
 	</div>
@@ -61,12 +61,15 @@ import * as d3 from "d3"
 import Ministry from './partials/ByMinistry.vue'
 import slugify from '@sindresorhus/slugify'
 import DataDownload from '@/components/partials/DataDownload.vue'
+import BubbleChart from '@/components/charts/bubbleChart.vue'
+import colors from '@/config/colors.js'
 
 export default {
 	name: 'Sectors',
 	components: {
 	   'ministry' : Ministry,
-	   'data-download-btn': DataDownload
+	   'data-download-btn': DataDownload,
+	   'bubble-chart' : BubbleChart
 	},
 	data() {
 		return {
@@ -111,7 +114,9 @@ export default {
 				2012
 			],
 			sector_data : [],
-			department_data : []
+			department_data : [],
+			max_val : 0,
+			min_val : 0
 		}
 	},
 	watch: {
@@ -169,6 +174,10 @@ export default {
 			this.current_budget_level = this.$route.params.budget_level;
 		},
 		analyse(data) {
+
+			this.max_val = d3.max(data, d => d.value);
+
+			this.min_val = d3.min(data, d => d.value);
 
 			this.sector_data = d3.nest()
 						  .key(function(d) { 
@@ -234,6 +243,9 @@ export default {
 		},
 		slugify(val) {
 			return slugify(val);
+		},
+		getSectorColor(sector) {
+			return colors.sectors[sector];
 		}
 	},
 	computed: {

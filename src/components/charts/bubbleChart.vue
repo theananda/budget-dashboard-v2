@@ -1,5 +1,5 @@
 <template>
-	<div :id="wrapperID" class="center-chart svg-wrapper">
+	<div :id="wrapperID" :class="className">
 		<svg :id='selector'
 			:height='height'
 			:width='width'
@@ -18,6 +18,10 @@
 			</g>
 		</svg>
 		<div :id="tooltipID" class="tooltip"></div>
+		<div class="info">
+			<h4>{{ name }}</h4>
+			<p>{{ value | numFormat('0,0.00') }} millions kyats</p>
+		</div>
 	</div>
 </template>
 
@@ -44,7 +48,9 @@ export default {
 		'width',
 		'height',
 		'selector',
-		'color'
+		'color',
+		'className',
+		'clickRoute'
 	],
 	methods: {
 		packChart() {
@@ -64,16 +70,23 @@ export default {
 
 		},
 		circleClick(d) {
-			if (this.$route.params.sector_name != d.data.key) {
+			if (this.clickRoute == 'sector') {
 				this.$router.push({ 
-					name: 'budget_entry', 
-					params: { 
-						fin_year: this.$route.params.fin_year,
-						budget_level: this.$route.params.budget_level,
-						sector_name: this.$route.params.sector_name,
-						budget_entry: d.data.key
-					} 
+					name: 'sector', 
+					params: { sector_name: d.data.key } 
 				});
+			} else {
+				if (this.$route.params.sector_name != d.data.key) {
+					this.$router.push({ 
+						name: 'budget_entry', 
+						params: { 
+							fin_year: this.$route.params.fin_year,
+							budget_level: this.$route.params.budget_level,
+							sector_name: this.$route.params.sector_name,
+							budget_entry: d.data.key
+						} 
+					});
+				}
 			}
 		},
 		circleMouseOver(d){

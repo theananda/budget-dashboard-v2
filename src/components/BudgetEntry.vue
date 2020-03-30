@@ -35,7 +35,7 @@
 			<div class="mdl-grid mdl-grid--no-spacing">
 				<div class="mdl-cell mdl-cell--3-col  mdl-cell--12-col-phone parent-ministry-wrapper mdl-layout--large-screen-only">
 					<h3 class="center-title colored-title" v-html="pageTitle"></h3>
-					<bubble-chart v-if="bubble_data" :name="sector" :value="0" :cdata="bubble_data" :selector="slugify(sector)" :width="200" :height="200" :color="getParentSectorColor"></bubble-chart>
+					<bubble-chart v-if="bubble_data" :name="sector" :value="sector_total" :cdata="bubble_data" :selector="slugify(sector)" :width="150" :height="150" :color="getParentSectorColor" className="center-chart svg-wrapper" clickRoute="budget_entry"></bubble-chart>
 				</div>
 				<div class="mdl-cell mdl-cell--9-col mdl-cell--3-offset-desktop mdl-cell--3-offset-tablet mdl-cell--12-col-phone">
 					<div class="center-content mdl-layout--small-screen-only">
@@ -82,7 +82,8 @@ export default {
 			chart_data: [],
 			bubble_data: [],
 			current_budget_entry: '',
-			parent_sector : ''
+			parent_sector : '',
+			sector_total : 0
 		}
 	},
 	watch: {
@@ -133,6 +134,11 @@ export default {
 			});
 		},
 		analyse(data) {
+
+			this.sector_total = d3.sum(data, function(d){
+				var f = d3.format(".2f");
+				return f(d.value); 
+			})
 
 			this.bubble_data = d3.nest()
 					.key(function(d){
