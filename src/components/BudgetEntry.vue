@@ -159,7 +159,7 @@ export default {
 	},
 	computed: {
 		pageTitle() {
-			return "Expenditure from <br/>" + this.api_params.fin_year + " " + this.api_params.budget_level + " Government";
+			return this.api_params.budget_level + "<br/>" + this.api_params.fin_year + " Expenditure";
 		},
 		entrySelector() {
 			return this.bubble_data.map(function(x){
