@@ -19,7 +19,7 @@
 				<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
 				    for="right-menu-block">
 				  <li class="mdl-menu__item">
-				  	<router-link to="/2019/Union/sectors" class="mdl-button mdl-js-button">
+				  	<router-link to="/2021/Union/sectors" class="mdl-button mdl-js-button">
 				  		<i class="material-icons">scatter_plot</i> Explore by Sectors
 				  	</router-link>
 				  </li>
